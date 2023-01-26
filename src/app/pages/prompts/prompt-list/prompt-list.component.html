@@ -1,0 +1,4 @@
+<button routerLink="/prompts/create" nz-button nzType="dashed">Create new PROMPT</button>
+<div *ngFor="let prompt of items" >
+  <app-prompt [prompt]="prompt" ></app-prompt>
+</div>

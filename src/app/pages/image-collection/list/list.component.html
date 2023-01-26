@@ -1,0 +1,16 @@
+<nz-table #basicTable [nzData]="collections">
+  <thead>
+  <tr>
+    <th>Created Date</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let data of basicTable.data">
+    <td>{{ data.createdDate }}</td>
+    <td></td>
+    <td>
+    </td>
+  </tr>
+  </tbody>
+</nz-table>

@@ -1,0 +1,23 @@
+<button routerLink="/tasks/create" nz-button nzType="dashed">Create task</button>
+
+<nz-table #basicTable [nzData]="tasks">
+  <thead>
+  <tr>
+    <th>Upn</th>
+    <th>Email</th>
+    <th>Name</th>
+    <th>Created Date</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let data of basicTable.data">
+    <td>{{ data.upn }}</td>
+    <td>{{ data.email }}</td>
+    <td>{{ data.name }}</td>
+    <td>{{ data.createdDate }}</td>
+    <td>
+    </td>
+  </tr>
+  </tbody>
+</nz-table>

@@ -1,0 +1,16 @@
+<button routerLink="/user-photos/upload" nz-button nzType="dashed">Upload photos</button>
+<div>
+  <div style="display: inline-block" *ngFor="let image of items">
+    <div>
+      <img
+        style="display: inline-block; margin: 0.5em"
+        nz-image
+        width="125px"
+        height="125px"
+        [nzSrc]="image.url"
+        alt=""
+      />
+    </div>
+    <div style="text-align: center; font-size: .75rem">{{image.fileName}}</div>
+  </div>
+</div>
