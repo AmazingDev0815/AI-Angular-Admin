@@ -145,4 +145,13 @@ export class ApiService {
     })
     return this.httpClient.get(url,{ headers });
   }
+
+  getStableDiffusionModels() {
+    let url = `${this.BASE_URL}/admin/stable-diffusion-models`;
+    let headers = new HttpHeaders({
+      // @ts-ignore
+      Authorization: this.userContext.AccessToken
+    })
+    return this.httpClient.get(url,{ headers });
+  }
 }

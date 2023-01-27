@@ -1,1 +1,44 @@
-saads
+<div>
+  <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="instanceName">Instance name</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Instance name is required">
+        <input nz-input formControlName="instanceName" id="instanceName"readonly />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="stableDiffusionModelId" nzRequired>Stable Diffusion Model</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" >
+        <nz-select id="stableDiffusionModelId" formControlName="stableDiffusionModelId">
+          <nz-option
+            *ngFor="let stableDiffusionModel of stableDiffusionModels"
+            [nzLabel]="stableDiffusionModel.modelName"
+            [nzValue]="stableDiffusionModel.id"
+          ></nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+    <div formArrayName="prompts" >
+      <nz-card *ngFor="let prompt of prompts">
+        <p>Prompt: {{prompt.value}}</p>
+        <p>Negative prompt: {{prompt.negativeValue}}</p>
+        <nz-form-item >
+          <nz-form-control [nzSm]="14" [nzXs]="24" >
+            <input nz-input formControlName="promptId" type="hidden"  />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item >
+          <nz-form-label [nzSm]="6" [nzXs]="24" > Number of images </nz-form-label>
+          <nz-form-control [nzSm]="14" [nzXs]="24" >
+            <input nz-input formControlName="numberOfImages"  />
+          </nz-form-control>
+        </nz-form-item>
+      </nz-card>
+    </div>
+    <nz-form-item nz-row class="register-area">
+      <nz-form-control [nzSpan]="14" [nzOffset]="6">
+        <button nz-button nzType="primary">Create task</button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+</div>

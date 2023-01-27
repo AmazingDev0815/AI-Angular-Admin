@@ -36,6 +36,7 @@ import {NzSelectModule} from "ng-zorro-antd/select";
 import {NzCheckboxModule} from "ng-zorro-antd/checkbox";
 import {CreateUserComponent} from "./pages/users/create-user/create-user.component";
 import {ImageCollectionListComponent} from "./pages/image-collection/list/list.component";
+import {NzCardModule} from "ng-zorro-antd/card";
 
 registerLocaleData(en);
 
@@ -53,7 +54,7 @@ registerLocaleData(en);
     PromptComponent,
     UserListComponent,
     CreateUserComponent,
-    ImageCollectionListComponent
+    ImageCollectionListComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,7 +76,8 @@ registerLocaleData(en);
     NzTableModule,
     NzDividerModule,
     NzSelectModule,
-    NzCheckboxModule
+    NzCheckboxModule,
+    NzCardModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }
