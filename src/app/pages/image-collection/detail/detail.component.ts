@@ -17,4 +17,9 @@ export class DetailComponent implements OnInit {
     })
   }
 
+  increaseResolution(id:string) {
+    this.apiService.increaseImageResolution(id).subscribe((data:any)=>{
+      this.images = data
+    })
+  }
 }

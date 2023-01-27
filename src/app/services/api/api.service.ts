@@ -182,4 +182,13 @@ export class ApiService {
     })
     return this.httpClient.post(url, command,{ headers });
   }
+
+  increaseImageResolution(id: string) {
+    let url = `${this.BASE_URL}/images/${id}/increase-resolution`;
+    let headers = new HttpHeaders({
+      // @ts-ignore
+      Authorization: this.userContext.AccessToken
+    })
+    return this.httpClient.put(url,{ headers });
+  }
 }

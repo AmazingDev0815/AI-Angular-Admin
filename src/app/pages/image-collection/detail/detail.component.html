@@ -1,1 +1,20 @@
-<p>detail works!</p>
+<button style="margin-bottom: 1em" routerLink="/user-photos/upload" nz-button nzType="primary">Upload photos</button>
+<div>
+  <div style="display: inline-block" *ngFor="let image of images">
+    <div>
+      <img
+        style="display: inline-block; margin-right: 0.5em; margin-bottom: 0.5em; margin-top: 0.5em"
+        nz-image
+        width="250px"
+        height="250px"
+        [nzSrc]="image.url"
+        alt=""
+      />
+    </div>
+    <div style="text-align: center; ">
+      <button style="margin-left: 0.5em" type="button" (click)="increaseResolution(image.id)" nz-button nzDanger  nzType="primary">
+        <span nz-icon nzType="delete"></span>
+      </button>
+    </div>
+  </div>
+</div>
