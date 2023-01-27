@@ -9,21 +9,17 @@ import {ApiService} from "../../../services/api/api.service";
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit, OnChanges{
+export class LoginComponent implements OnInit{
   validateForm!: UntypedFormGroup;
   constructor(private apiService: ApiService,
               private fb: UntypedFormBuilder,
               public userContext: UserContext,
               private router: Router) {
-
+    this.isAuthenticated = this.userContext.IsAuthenticated();
   }
   @Input() isAuthenticated: boolean = false;
 
-  ngOnChanges(changes: SimpleChanges) {
-    // changes.prop contains the old and the new value...
-  }
   ngOnInit(): void {
-    this.isAuthenticated = this.userContext.IsAuthenticated();
       this.validateForm = this.fb.group({
         upn: [null, [Validators.required]],
         password: [null, [Validators.required]]
