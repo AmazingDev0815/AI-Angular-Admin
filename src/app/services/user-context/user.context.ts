@@ -4,11 +4,12 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UserContext {
+
   constructor() {
   }
-  AccessToken = localStorage.getItem("accessToken");
+
   IsAuthenticated() : boolean {
-    return  this.AccessToken != null;
+    return localStorage.getItem("accessToken") != null;
   }
 
   setAccessToken(accessToken: string){
