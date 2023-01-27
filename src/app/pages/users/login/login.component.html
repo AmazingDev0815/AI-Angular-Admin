@@ -16,9 +16,20 @@
   <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Log in</button>
 </form>
 <div *ngIf="isAuthenticated" >
-  You are already logged in!
-  <button routerLink="/user-photos/list" nz-button >My photos</button>
-  <button routerLink="/tasks/list" nz-button >My tasks</button>
-  <button (click)="logout()" nz-button nzType="primary">Logout</button>
+  <p>
+    You are already logged in!
+  </p>
+  <p>
+    <button routerLink="/user-photos/list" nz-button nzType="dashed">My photos</button>
+  </p>
+  <p>
+    <button routerLink="/tasks/list" nz-button nzType="dashed">My tasks</button>
+  </p>
+  <p>
+    <button routerLink="/collections/list" nz-button nzType="dashed">My image collections</button>
+  </p>
+  <p>
+    <button (click)="logout()" nzDanger nz-button nzType="primary">Logout</button>
+  </p>
 </div>
 
