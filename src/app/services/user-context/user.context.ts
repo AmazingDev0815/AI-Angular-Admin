@@ -8,6 +8,9 @@ export class UserContext {
   constructor() {
   }
 
+  get AccessToken(): string | null{
+    return localStorage.getItem("accessToken")
+  }
   IsAuthenticated() : boolean {
     return localStorage.getItem("accessToken") != null;
   }
