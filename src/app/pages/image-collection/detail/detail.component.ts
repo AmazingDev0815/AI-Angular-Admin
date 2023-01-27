@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute, Router} from "@angular/router";
+import {ApiService} from "../../../services/api/api.service";
 
 @Component({
   selector: 'app-detail',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./detail.component.css']
 })
 export class DetailComponent implements OnInit {
-
-  constructor() { }
-
+  constructor(private router:Router, private route: ActivatedRoute, private apiService:ApiService) { }
+  images : any[]= []
   ngOnInit(): void {
+    let id = this.route.snapshot.paramMap.get('id');
+    this.apiService.getImageCollection(id).subscribe((data:any)=>{
+      this.images = data
+    })
   }
 
 }

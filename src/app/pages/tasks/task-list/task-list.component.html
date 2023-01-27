@@ -1,22 +1,46 @@
-<button routerLink="/tasks/create" nz-button nzType="dashed">Create task</button>
+<button style="float: right; margin-bottom: 1em"  routerLink="/tasks/create" nz-button nzType="primary">Create task</button>
 
 <nz-table #basicTable [nzData]="tasks">
   <thead>
   <tr>
-    <th>Upn</th>
-    <th>Email</th>
-    <th>Name</th>
-    <th>Created Date</th>
+    <th>Model name</th>
+    <th>Instance name</th>
+    <th>Time</th>
+    <th>Information</th>
+    <th [nzWidth]='"250px"'>Status</th>
     <th>Action</th>
   </tr>
   </thead>
   <tbody>
   <tr *ngFor="let data of basicTable.data">
-    <td>{{ data.upn }}</td>
-    <td>{{ data.email }}</td>
-    <td>{{ data.name }}</td>
-    <td>{{ data.createdDate }}</td>
+    <td>{{ data.stableDiffusionModel.modelName }}</td>
+    <td>{{ data.instanceName }}</td>
     <td>
+      <p>Created: {{ data.createdDate }} </p>
+      <p>Started: {{ data.startedDate }} </p>
+      <p>Completed: {{ data.completedDate }} </p>
+    </td>
+    <td>
+      <p>Text Encoder Step: {{ data.training.textEncoder.steps}} </p>
+      <p>Unet Step: {{ data.training.unet.steps}} </p>
+    </td>
+    <td>
+      <p style="font-weight: bold"> {{ data.status.name }}</p>
+      <nz-progress [nzPercent]="data.training.textEncoder.trainedSteps*100/ data.training.textEncoder.steps" [nzStatus]="data.status.value <= 2 ? 'active' : 'success'">
+      </nz-progress>
+      <nz-progress [nzPercent]="data.training.unet.trainedSteps*100/ data.training.unet.steps" [nzStatus]="data.status.value <= 3 ? 'active' : 'success'">
+      </nz-progress>
+    </td>
+    <td>
+      <p>
+        <a *ngIf="data.status.value == 10" href="{{data.checkpointFilePath}}">Download .ckpt file</a>
+      </p>
+      <p>
+        <button routerLink="/collections/detail/{{data.collectionId}}" *ngIf="data.status.value == 10"  (click)="stop(data.id)" nz-button nzType="primary">Go to result</button>
+      </p>
+      <p>
+        <button *ngIf="data.status.value != 10"  (click)="stop(data.id)" nz-button nzDanger nzType="primary">Stop</button>
+      </p>
     </td>
   </tr>
   </tbody>

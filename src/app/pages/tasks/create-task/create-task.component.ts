@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ApiService} from "../../../services/api/api.service";
-import {FormArray, FormControl, FormGroup, UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
+import {FormArray, UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 
 @Component({
@@ -12,22 +12,44 @@ export class CreateTaskComponent implements OnInit {
   prompts: any[] = []
   stableDiffusionModels:  any[] = []
   validateForm!: UntypedFormGroup;
-  command: any;
   constructor(private apiService:ApiService, private router:Router, private fb: UntypedFormBuilder) {
   }
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
       instanceName: ["u8s0b1enq6pz3o", [Validators.required]],
-      stableDiffusionModelId: [null, [Validators.required]],
-      prompts : new FormArray([]),
+      stableDiffusionModelId: ['', [Validators.required]],
+      numberOfTrainingTextEncoderSteps: [0],
+      numberOfTrainingUnetSteps: [0],
+      prompts: this.fb.array([])
+    });
+
+    this.apiService.getUserPhotos().subscribe((data:any) =>{
+      let userPhotos = data.items;
+      this.validateForm.get('numberOfTrainingTextEncoderSteps')?.setValue(userPhotos.length*30);
+      this.validateForm.get('numberOfTrainingUnetSteps')?.setValue(userPhotos.length*70);
     });
 
     this.apiService.getPrompts().subscribe((data:any) => {
       this.prompts = data.items;
+      for (let prompt of this.prompts) {
+        (this.validateForm.get('prompts') as FormArray).push(this.fb.group({
+          promptId: [prompt.id, Validators.required],
+          numberOfImages: [10, Validators.required],
+          active: [true],
+          value : [prompt.value],
+          negativeValue : [prompt.negativeValue],
+          seed: [prompt.seed],
+          sampler: [prompt.sampler],
+          numberOfInferenceSteps: [prompt.numberOfInferenceSteps],
+          cfgScale: [prompt.cfgScale]
+        }))
+      }
     });
+
     this.apiService.getStableDiffusionModels().subscribe((data:any) => {
       this.stableDiffusionModels = data.items;
+      this.validateForm.get('stableDiffusionModelId')?.setValue(this.stableDiffusionModels[0].id);
     });
   }
 
@@ -46,19 +68,5 @@ export class CreateTaskComponent implements OnInit {
         }
       });
     }
-  }
-
-  patch() {
-    const control = <FormArray>this.validateForm.get('prompts');
-    this.prompts.forEach((x:any) => {
-      control.push(this.patchValues(x.id))
-    })
-  }
-
-  patchValues(label:any) {
-    return this.fb.group({
-      id: [label],
-      numberOfImages: 10
-    })
   }
 }

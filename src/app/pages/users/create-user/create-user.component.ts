@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
 import {ApiService} from "../../../services/api/api.service";
 import {Router} from "@angular/router";
 
@@ -8,7 +8,7 @@ import {Router} from "@angular/router";
   templateUrl: './create-user.component.html',
   styleUrls: ['./create-user.component.css']
 })
-export class CreateUserComponent implements OnInit {
+export class CreateUserComponent implements OnInit{
   validateForm!: UntypedFormGroup;
 
   constructor(private fb: UntypedFormBuilder, private apiService:ApiService, private router:Router) { }
@@ -37,4 +37,5 @@ export class CreateUserComponent implements OnInit {
       });
     }
   }
+
 }

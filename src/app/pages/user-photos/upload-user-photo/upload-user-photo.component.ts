@@ -14,16 +14,13 @@ export class UploadUserPhotoComponent implements OnInit {
   previewImage: string | undefined = '';
   previewVisible = false;
 
-  constructor(private router: Router, private apiService: ApiService) { }
+  constructor(private router: Router, private apiService: ApiService) {
+
+  }
 
   ngOnInit(): void {
   }
   handlePreview = async (file: NzUploadFile): Promise<void> => {
-    // if (!file.url && !file.preview) {
-    //   file.preview = await getBase64(file.originFileObj!);
-    // }
-    // this.previewImage = file.url || file.preview;
-    // this.previewVisible = true;
   };
 
   onSubmitImage() {

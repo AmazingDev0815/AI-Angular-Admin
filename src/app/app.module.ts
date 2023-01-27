@@ -28,7 +28,6 @@ import {UserPhotoListComponent} from "./pages/user-photos/user-photo-list/user-p
 import {NzImageModule} from "ng-zorro-antd/image";
 import {PromptListComponent} from "./pages/prompts/prompt-list/prompt-list.component";
 import {CreatePromptComponent} from "./pages/prompts/create-prompt/create-prompt.component";
-import {PromptComponent} from "./pages/prompts/prompt-list/prompt/prompt.component";
 import {UserListComponent} from "./pages/users/user-list/user-list.component";
 import {NzTableModule} from "ng-zorro-antd/table";
 import {NzDividerModule} from "ng-zorro-antd/divider";
@@ -37,6 +36,9 @@ import {NzCheckboxModule} from "ng-zorro-antd/checkbox";
 import {CreateUserComponent} from "./pages/users/create-user/create-user.component";
 import {ImageCollectionListComponent} from "./pages/image-collection/list/list.component";
 import {NzCardModule} from "ng-zorro-antd/card";
+import {NzTagModule} from "ng-zorro-antd/tag";
+import {NzProgressModule} from "ng-zorro-antd/progress";
+import {DetailComponent} from "./pages/image-collection/detail/detail.component";
 
 registerLocaleData(en);
 
@@ -51,10 +53,10 @@ registerLocaleData(en);
     CreateTaskComponent,
     TaskListComponent,
     TaskDetailComponent,
-    PromptComponent,
     UserListComponent,
     CreateUserComponent,
     ImageCollectionListComponent,
+    DetailComponent
   ],
   imports: [
     BrowserModule,
@@ -77,7 +79,9 @@ registerLocaleData(en);
     NzDividerModule,
     NzSelectModule,
     NzCheckboxModule,
-    NzCardModule
+    NzCardModule,
+    NzTagModule,
+    NzProgressModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }

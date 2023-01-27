@@ -137,7 +137,7 @@ export class ApiService {
     return this.httpClient.get(url,{ headers });
   }
 
-  getImageCollection(imageCollectionId: string){
+  getImageCollection(imageCollectionId: string | null){
     let url = `${this.BASE_URL}/image-collections/${imageCollectionId}`;
     let headers = new HttpHeaders({
       // @ts-ignore
@@ -153,5 +153,24 @@ export class ApiService {
       Authorization: this.userContext.AccessToken
     })
     return this.httpClient.get(url,{ headers });
+  }
+
+  deleteUserPhoto(id: string) {
+    let url = `${this.BASE_URL}/user-photos/${id}`;
+    let headers = new HttpHeaders({
+      // @ts-ignore
+      Authorization: this.userContext.AccessToken
+    })
+    return this.httpClient.delete(url,{ headers });
+  }
+
+
+  stopTask(id: string) {
+    let url = `${this.BASE_URL}/generating-tasks/${id}/cancel`;
+    let headers = new HttpHeaders({
+      // @ts-ignore
+      Authorization: this.userContext.AccessToken
+    })
+    return this.httpClient.put(url,{ headers });
   }
 }

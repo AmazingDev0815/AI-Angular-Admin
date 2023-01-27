@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
 import {ApiService} from "../../../services/api/api.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-create-prompt',
@@ -11,7 +12,10 @@ export class CreatePromptComponent implements OnInit {
   validateForm!: UntypedFormGroup;
   tags : string[] = [];
   selectedTags: string[] = [];
-  constructor(private fb: UntypedFormBuilder, private apiService:ApiService) { }
+
+  constructor(private fb: UntypedFormBuilder,
+              private apiService: ApiService,
+              private router: Router) { }
 
   ngOnInit(): void {
      this.apiService.getTags().subscribe((data:any)=>{
@@ -35,7 +39,7 @@ export class CreatePromptComponent implements OnInit {
     if (this.validateForm.valid) {
       console.log('submit', this.validateForm.value);
       this.apiService.createPrompt(this.validateForm.value).subscribe((data:any)=>{
-        console.log(data);
+        this.router.navigate(["prompts/list"]).then(r => {})
       })
     } else {
       Object.values(this.validateForm.controls).forEach(control => {

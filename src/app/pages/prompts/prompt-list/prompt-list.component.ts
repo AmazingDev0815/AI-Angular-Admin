@@ -7,16 +7,22 @@ import {ApiService} from "../../../services/api/api.service";
   styleUrls: ['./prompt-list.component.css']
 })
 export class PromptListComponent implements OnInit {
-  items: any[] = []
+  prompts: any[] = []
 
   constructor(private apiService: ApiService) {
-
+  }
+  ngOnInit(): void {
+    this.getPrompts();
   }
 
-  ngOnInit(): void {
+  getPrompts(){
     this.apiService.getPrompts().subscribe((data:any)=>{
-      this.items = data.items;
+      this.prompts = data.items;
     })
   }
-
+  delete(id:string) {
+    this.apiService.deletePrompt(id).subscribe((data:any)=>{
+      this.getPrompts();
+    })
+  }
 }

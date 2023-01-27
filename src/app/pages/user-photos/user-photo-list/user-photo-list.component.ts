@@ -8,15 +8,22 @@ import {ApiService} from "../../../services/api/api.service";
 })
 export class UserPhotoListComponent implements OnInit {
 
-  public items : any;
+  public photos : any [] = [];
 
   constructor(private apiService:ApiService) {
-    apiService.getUserPhotos().subscribe( (data: any) => {
-      this.items = data.items;
-    });
   }
 
   ngOnInit(): void {
+    this.apiService.getUserPhotos().subscribe( (data: any) => {
+      this.photos = data.items;
+    });
   }
 
+  delete(id:string) {
+    this.apiService.deleteUserPhoto(id).subscribe( (data: any) => {
+      this.apiService.getUserPhotos().subscribe( (data: any) => {
+        this.photos = data.items;
+      });
+    });
+  }
 }

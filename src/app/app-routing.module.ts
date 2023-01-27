@@ -10,12 +10,13 @@ import {UserListComponent} from "./pages/users/user-list/user-list.component";
 import {CreateUserComponent} from "./pages/users/create-user/create-user.component";
 import {ImageCollectionListComponent} from "./pages/image-collection/list/list.component";
 import {CreateTaskComponent} from "./pages/tasks/create-task/create-task.component";
+import {DetailComponent} from "./pages/image-collection/detail/detail.component";
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'users/login' },
   { path: 'users/login', component: LoginComponent },
   { path: 'users/list', component: UserListComponent },
-  { path: 'users/create', component: CreateUserComponent },
+  { path: 'users/create', component: CreateUserComponent},
   { path: 'user-photos/list', component: UserPhotoListComponent },
   { path: 'user-photos/upload', component: UploadUserPhotoComponent },
   { path: 'collections/list', component: ImageCollectionListComponent },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'tasks/create', component: CreateTaskComponent },
   { path: 'prompts/list', component: PromptListComponent },
   { path: 'prompts/create', component: CreatePromptComponent },
+  { path: 'collections/detail/:id', component: DetailComponent },
 ];
 
 @NgModule({
