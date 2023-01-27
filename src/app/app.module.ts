@@ -39,6 +39,12 @@ import {NzCardModule} from "ng-zorro-antd/card";
 import {NzTagModule} from "ng-zorro-antd/tag";
 import {NzProgressModule} from "ng-zorro-antd/progress";
 import {DetailComponent} from "./pages/image-collection/detail/detail.component";
+import {
+  StableDiffusionModelListComponent
+} from "./pages/create-stable-diffusion-mode/stable-diffusion-model-list/stable-diffusion-model-list.component";
+import {
+  CreateStableDiffusionModelComponent
+} from "./pages/create-stable-diffusion-mode/create-stable-diffusion-model/create-stable-diffusion-model.component";
 
 registerLocaleData(en);
 
@@ -56,7 +62,9 @@ registerLocaleData(en);
     UserListComponent,
     CreateUserComponent,
     ImageCollectionListComponent,
-    DetailComponent
+    DetailComponent,
+    StableDiffusionModelListComponent,
+    CreateStableDiffusionModelComponent
   ],
   imports: [
     BrowserModule,

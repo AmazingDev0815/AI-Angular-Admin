@@ -11,6 +11,12 @@ import {CreateUserComponent} from "./pages/users/create-user/create-user.compone
 import {ImageCollectionListComponent} from "./pages/image-collection/list/list.component";
 import {CreateTaskComponent} from "./pages/tasks/create-task/create-task.component";
 import {DetailComponent} from "./pages/image-collection/detail/detail.component";
+import {
+  CreateStableDiffusionModelComponent
+} from "./pages/create-stable-diffusion-mode/create-stable-diffusion-model/create-stable-diffusion-model.component";
+import {
+  StableDiffusionModelListComponent
+} from "./pages/create-stable-diffusion-mode/stable-diffusion-model-list/stable-diffusion-model-list.component";
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'users/login' },
@@ -25,6 +31,8 @@ const routes: Routes = [
   { path: 'prompts/list', component: PromptListComponent },
   { path: 'prompts/create', component: CreatePromptComponent },
   { path: 'collections/detail/:id', component: DetailComponent },
+  { path: 'stable-diffusion-models/create', component: CreateStableDiffusionModelComponent },
+  { path: 'stable-diffusion-models/list', component: StableDiffusionModelListComponent },
 ];
 
 @NgModule({

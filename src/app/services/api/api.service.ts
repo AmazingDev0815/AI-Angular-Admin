@@ -173,4 +173,13 @@ export class ApiService {
     })
     return this.httpClient.put(url,{ headers });
   }
+
+  createStableDiffusionModel(command: any) {
+    let url = `${this.BASE_URL}/admin/stable-diffusion-models`;
+    let headers = new HttpHeaders({
+      // @ts-ignore
+      Authorization: this.userContext.AccessToken
+    })
+    return this.httpClient.post(url, command,{ headers });
+  }
 }
