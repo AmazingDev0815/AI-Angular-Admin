@@ -37,25 +37,38 @@
     <div formArrayName="prompts">
       <div *ngFor="let prompt of prompts; let i=index" [formGroupName]="i">
         <nz-card>
-          <nz-form-item nz-row class="register-area">
-            <nz-form-control [nzSpan]="14" [nzOffset]="6">
-              <label nz-checkbox formControlName="active">
-            <span>Use this prompt</span>
-              </label>
+          <nz-form-item nz-row >
+            <nz-form-control [nzSpan]="10" [nzOffset]="6">
+              <nz-form-item >
+                <label nz-checkbox formControlName="active">
+                  <span style="font-weight: bold">USE THIS PROMPT</span>
+                </label>
+              </nz-form-item>
+              <nz-form-item >
+                <nz-form-label > Tags </nz-form-label>
+                <nz-form-control>
+                  <nz-tag  *ngFor="let tag of prompt.tags" [nzColor]="'magenta'">{{tag}}</nz-tag>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item >
+                <nz-form-label> Prompt Id </nz-form-label>
+                <nz-form-control>
+                  <input nz-input formControlName="promptId" readonly/>
+                </nz-form-control>
+              </nz-form-item>
+            </nz-form-control>
+            <nz-form-control [nzSpan]="4" >
+              <img
+                style="float: right;"
+                nz-image
+                width="125px"
+                height="125px"
+                [nzSrc]="prompt.exampleImagePath"
+                alt=""
+              />
             </nz-form-control>
           </nz-form-item>
-          <nz-form-item >
-            <nz-form-label [nzSm]="6" [nzXs]="24" > Tags </nz-form-label>
-            <nz-form-control [nzSm]="14" [nzXs]="24" >
-              <nz-tag  *ngFor="let tag of prompt.tags" [nzColor]="'magenta'">{{tag}}</nz-tag>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item >
-            <nz-form-label [nzSm]="6" [nzXs]="24" > Prompt Id </nz-form-label>
-            <nz-form-control [nzSm]="14" [nzXs]="24" >
-              <input nz-input formControlName="promptId" readonly/>
-            </nz-form-control>
-          </nz-form-item>
+
           <nz-form-item >
             <nz-form-label [nzSm]="6" [nzXs]="24" > Prompt </nz-form-label>
             <nz-form-control [nzSm]="14" [nzXs]="24" >
@@ -86,7 +99,6 @@
               <input type="number" nz-input formControlName="seed" />
             </nz-form-control>
           </nz-form-item>
-
           <nz-form-item >
             <nz-form-label [nzSm]="6" [nzXs]="24" > CFG Scale </nz-form-label>
             <nz-form-control [nzSm]="14" [nzXs]="24" >
