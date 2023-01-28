@@ -69,11 +69,23 @@ export class ApiService {
 
   createPrompt(command: CreatePromptCommand){
     let url = `${this.BASE_URL}/admin/prompts`;
+    let formData = new FormData();
+
+    formData.append("exampleImageFile", command.exampleImageFile);
+    formData.append("value", command.value);
+    formData.append("negativeValue", command.negativeValue);
+    formData.append("seed", command.seed?.toString());
+    formData.append("numberOfInferenceSteps", command.numberOfInferenceSteps?.toString());
+    formData.append("cfgScale", command.cfgScale?.toString());
+    command.tags.forEach(x=> {
+      formData.append("tags", x);
+    })
+
     let headers = new HttpHeaders({
       // @ts-ignore
       Authorization: this.userContext.AccessToken
     })
-    return this.httpClient.post(url,command, { headers });
+    return this.httpClient.post(url, formData, { headers });
   }
   getTasks(){
     let url = `${this.BASE_URL}/generating-tasks?pageSize=100`;

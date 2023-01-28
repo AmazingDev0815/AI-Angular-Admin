@@ -41,8 +41,8 @@
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
-    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="tags" nzRequired>Tags</nz-form-label>
-    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input website!">
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="tags">Tags</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" >
       <nz-select id="tags" formControlName="tags" nzMode="multiple" [(ngModel)]="selectedTags" nzShowSearch nzAllowClear [nzDropdownRender]="renderTemplate">
         <nz-option
           *ngFor="let tag of tags"
@@ -63,6 +63,23 @@
       </ng-template>
     </nz-form-control>
   </nz-form-item>
+  <nz-form-item nz-row>
+    <nz-form-label [nzSm]="6" [nzXs]="24" >Example image</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" >
+      <nz-upload
+        nzListType="picture-card"
+        [(nzFileList)]="exampleImageFiles"
+        [nzMultiple]="false"
+        [nzShowButton]="exampleImageFiles.length < 1"
+      >
+        <div>
+          <span nz-icon nzType="plus"></span>
+          <div style="margin-top: 8px">Upload</div>
+        </div>
+      </nz-upload>
+    </nz-form-control>
+  </nz-form-item>
+
   <nz-form-item nz-row class="register-area">
     <nz-form-control [nzSpan]="14" [nzOffset]="6">
       <button nz-button nzType="primary">Save</button>

@@ -1,13 +1,27 @@
 <button style="margin-bottom: 1em" routerLink="/prompts/create" nz-button nzType="primary">Create new PROMPT</button>
 <div *ngFor="let prompt of prompts" >
-  <nz-card>
-    <p>Prompt: {{prompt.value}}</p>
-    <p>Negative Prompt: {{prompt.negativeValue}}</p>
-    <p>Tags:
-        <nz-tag  *ngFor="let tag of prompt.tags" [nzColor]="'magenta'">{{tag}}</nz-tag>
-    </p>
-    <button type="button" (click)="delete(prompt.id)" nz-button nzDanger  nzType="primary">
-      Delete <span nz-icon nzType="delete"></span>
-    </button>
+  <nz-card >
+    <div nz-row>
+      <div nz-col nzSpan="18" >
+        <p>Prompt: {{prompt.value}}</p>
+        <p>Negative Prompt: {{prompt.negativeValue}}</p>
+        <p>Tags:
+          <nz-tag  *ngFor="let tag of prompt.tags" [nzColor]="'magenta'">{{tag}}</nz-tag>
+        </p>
+        <button type="button" (click)="delete(prompt.id)" nz-button nzDanger  nzType="primary">
+          Delete <span nz-icon nzType="delete"></span>
+        </button>
+      </div>
+      <div nz-col nzSpan="6" >
+        <img
+          style="float: right;"
+          nz-image
+          width="250px"
+          height="250px"
+          [nzSrc]="prompt.exampleImagePath"
+          alt=""
+        />
+      </div>
+    </div>
   </nz-card>
 </div>

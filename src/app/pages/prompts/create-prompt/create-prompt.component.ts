@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
 import {ApiService} from "../../../services/api/api.service";
 import {Router} from "@angular/router";
+import {NzUploadFile} from "ng-zorro-antd/upload";
 
 @Component({
   selector: 'app-create-prompt',
@@ -12,6 +13,7 @@ export class CreatePromptComponent implements OnInit {
   validateForm!: UntypedFormGroup;
   tags : string[] = [];
   selectedTags: string[] = [];
+  exampleImageFiles: NzUploadFile[] = [];
 
   constructor(private fb: UntypedFormBuilder,
               private apiService: ApiService,
@@ -27,6 +29,7 @@ export class CreatePromptComponent implements OnInit {
       negativeValue: [null, [Validators.required]],
       cfgScale: [7, [Validators.required]],
       numberOfInferenceSteps: [20, [Validators.required]],
+      exampleImageFile: [null],
       seed: [-1, [Validators.required]],
       tags: [[]],
     });
@@ -38,6 +41,7 @@ export class CreatePromptComponent implements OnInit {
   submitForm(): void {
     if (this.validateForm.valid) {
       console.log('submit', this.validateForm.value);
+      this.validateForm.value.exampleImageFile = this.exampleImageFiles.at(0)?.originFileObj;
       this.apiService.createPrompt(this.validateForm.value).subscribe((data:any)=>{
         this.router.navigate(["prompts/list"]).then(r => {})
       })
