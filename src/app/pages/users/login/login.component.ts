@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit{
       let formValue = this.validateForm.value;
       this.apiService.getAccessToken(formValue.upn, formValue.password).subscribe((data: any)=> {
         this.userContext.setAccessToken(data.accessToken);
+        this.userContext.setUpn(formValue.upn);
         this.router.navigate(["users/login"]).then(r => {})
         this.isAuthenticated = true;
       }, error => {

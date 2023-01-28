@@ -1,0 +1,3 @@
+<p *ngIf="userContext.IsAuthenticated()" style="font-weight: bold"> Welcome {{userContext.Upn}}!
+  <a routerLink="/users/login" nz-button nzDanger nzType="dashed"> Logout </a>
+</p>

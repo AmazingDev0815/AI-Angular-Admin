@@ -45,6 +45,7 @@ import {
 import {
   CreateStableDiffusionModelComponent
 } from "./pages/create-stable-diffusion-mode/create-stable-diffusion-model/create-stable-diffusion-model.component";
+import {UserInfoComponent} from "./pages/users/user-info/user-info.component";
 
 registerLocaleData(en);
 
@@ -64,7 +65,8 @@ registerLocaleData(en);
     ImageCollectionListComponent,
     DetailComponent,
     StableDiffusionModelListComponent,
-    CreateStableDiffusionModelComponent
+    CreateStableDiffusionModelComponent,
+    UserInfoComponent,
   ],
   imports: [
     BrowserModule,

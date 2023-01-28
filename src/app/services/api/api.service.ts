@@ -118,7 +118,14 @@ export class ApiService {
     })
     return this.httpClient.get(url,{ headers });
   }
-
+  getUserInfo(upn: string){
+    let url = `${this.BASE_URL}/users/${upn}`;
+    let headers = new HttpHeaders({
+      // @ts-ignore
+      Authorization: this.userContext.AccessToken
+    })
+    return this.httpClient.get(url,{ headers });
+  }
   createUser(command: CreateUserCommand){
     let url = `${this.BASE_URL}/admin/users`;
     return this.httpClient.post(url,command);
