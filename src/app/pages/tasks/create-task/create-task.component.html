@@ -28,7 +28,7 @@
         <nz-select id="stableDiffusionModelId" formControlName="stableDiffusionModelId">
           <nz-option
             *ngFor="let stableDiffusionModel of stableDiffusionModels"
-            [nzLabel]="stableDiffusionModel.modelName"
+            [nzLabel]="stableDiffusionModel.modelName + ' [' + stableDiffusionModel.dockerImageTag + ']'"
             [nzValue]="stableDiffusionModel.id"
           ></nz-option>
         </nz-select>
