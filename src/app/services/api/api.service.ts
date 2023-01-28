@@ -121,11 +121,7 @@ export class ApiService {
 
   createUser(command: CreateUserCommand){
     let url = `${this.BASE_URL}/admin/users`;
-    let headers = new HttpHeaders({
-      // @ts-ignore
-      Authorization: this.userContext.AccessToken
-    })
-    return this.httpClient.post(url,command,{ headers });
+    return this.httpClient.post(url,command);
   }
 
   getTags(){
