@@ -21,4 +21,10 @@ export class TaskListComponent implements OnInit {
     this.apiService.stopTask(id).subscribe((data:any)=>{
     })
   }
+
+  reload() {
+    this.apiService.getTasks().subscribe((data:any)=>{
+      this.tasks = data.items;
+    })
+  }
 }

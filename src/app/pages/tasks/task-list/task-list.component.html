@@ -1,4 +1,5 @@
-<button style="float: right; margin-bottom: 1em"  routerLink="/tasks/create" nz-button nzType="primary">Create task</button>
+<button style="float: right; margin-bottom: 1em; margin-left: 1em"  routerLink="/tasks/create" nz-button nzType="primary">Create task</button>
+<button style="float: right; margin-bottom: 1em"  (click)="reload()" nz-button  nzType="default">Refresh</button>
 
 <nz-table #basicTable [nzData]="tasks">
   <thead>
