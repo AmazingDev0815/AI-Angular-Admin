@@ -28,6 +28,9 @@
       <li nz-submenu nzOpen nzTitle="Management" nzIcon="setting">
         <ul>
           <li nz-menu-item nzMatchRouter>
+            <a routerLink="/prompts/create">Create prompt</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
             <a routerLink="/prompts/list">Prompt List</a>
           </li>
           <li nz-menu-item nzMatchRouter>
@@ -38,10 +41,13 @@
       <li nz-submenu nzOpen nzTitle="User Management" nzIcon="user">
         <ul>
           <li nz-menu-item nzMatchRouter>
-            <a routerLink="/users/list">User List</a>
+            <a routerLink="/users/login">Login</a>
           </li>
           <li nz-menu-item nzMatchRouter>
-            <a routerLink="/users/login">Login</a>
+            <a routerLink="/users/create">Create user</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/users/list">User List</a>
           </li>
         </ul>
       </li>

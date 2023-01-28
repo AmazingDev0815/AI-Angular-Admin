@@ -17,22 +17,23 @@ import {
 import {
   StableDiffusionModelListComponent
 } from "./pages/create-stable-diffusion-mode/stable-diffusion-model-list/stable-diffusion-model-list.component";
+import {AuthorizationGuard} from "./guard/authorization.guard";
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'users/login' },
-  { path: 'users/login', component: LoginComponent },
-  { path: 'users/list', component: UserListComponent },
+  { path: 'users/login', component: LoginComponent},
   { path: 'users/create', component: CreateUserComponent},
-  { path: 'user-photos/list', component: UserPhotoListComponent },
-  { path: 'user-photos/upload', component: UploadUserPhotoComponent },
-  { path: 'collections/list', component: ImageCollectionListComponent },
-  { path: 'tasks/list', component: TaskListComponent },
-  { path: 'tasks/create', component: CreateTaskComponent },
-  { path: 'prompts/list', component: PromptListComponent },
-  { path: 'prompts/create', component: CreatePromptComponent },
-  { path: 'collections/detail/:id', component: DetailComponent },
-  { path: 'stable-diffusion-models/create', component: CreateStableDiffusionModelComponent },
-  { path: 'stable-diffusion-models/list', component: StableDiffusionModelListComponent },
+  { path: 'users/list', component: UserListComponent , canActivate: [AuthorizationGuard]},
+  { path: 'user-photos/list', component: UserPhotoListComponent , canActivate: [AuthorizationGuard]},
+  { path: 'user-photos/upload', component: UploadUserPhotoComponent , canActivate: [AuthorizationGuard]},
+  { path: 'tasks/list', component: TaskListComponent , canActivate: [AuthorizationGuard]},
+  { path: 'tasks/create', component: CreateTaskComponent , canActivate: [AuthorizationGuard]},
+  { path: 'prompts/list', component: PromptListComponent , canActivate: [AuthorizationGuard]},
+  { path: 'prompts/create', component: CreatePromptComponent , canActivate: [AuthorizationGuard]},
+  { path: 'collections/list', component: ImageCollectionListComponent , canActivate: [AuthorizationGuard]},
+  { path: 'collections/detail/:id', component: DetailComponent , canActivate: [AuthorizationGuard]},
+  { path: 'stable-diffusion-models/create', component: CreateStableDiffusionModelComponent, canActivate: [AuthorizationGuard] },
+  { path: 'stable-diffusion-models/list', component: StableDiffusionModelListComponent , canActivate: [AuthorizationGuard]},
 ];
 
 @NgModule({
