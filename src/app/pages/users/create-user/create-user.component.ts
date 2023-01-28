@@ -19,6 +19,7 @@ export class CreateUserComponent implements OnInit{
       password: [null, [Validators.required]],
       name: [null, [Validators.required]],
       email: [null, [Validators.required]],
+      gender: [null, [Validators.required]],
     });
   }
   submitForm(): void {
