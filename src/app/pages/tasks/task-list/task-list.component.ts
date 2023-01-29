@@ -13,12 +13,11 @@ export class TaskListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.load();
-    this.interval = setInterval( this.load, 5000)
+    this.load(this.apiService);
+    this.interval = setInterval(() => this.load(this.apiService), 5000)
   }
 
   ngOnDestroy(): void {
-    this.load();
     clearInterval(this.interval)
   }
 
@@ -27,8 +26,8 @@ export class TaskListComponent implements OnInit, OnDestroy {
     })
   }
 
-  load() {
-    this.apiService.getTasks().subscribe((data:any)=>{
+  load(apiService: ApiService) {
+    apiService.getTasks().subscribe((data:any)=>{
       this.tasks = data.items;
     })
   }
