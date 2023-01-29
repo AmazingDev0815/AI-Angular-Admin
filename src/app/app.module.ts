@@ -41,10 +41,10 @@ import {NzProgressModule} from "ng-zorro-antd/progress";
 import {DetailComponent} from "./pages/image-collection/detail/detail.component";
 import {
   StableDiffusionModelListComponent
-} from "./pages/create-stable-diffusion-mode/stable-diffusion-model-list/stable-diffusion-model-list.component";
+} from "./pages/stable-diffusion-model/stable-diffusion-model-list/stable-diffusion-model-list.component";
 import {
   CreateStableDiffusionModelComponent
-} from "./pages/create-stable-diffusion-mode/create-stable-diffusion-model/create-stable-diffusion-model.component";
+} from "./pages/stable-diffusion-model/create-stable-diffusion-model/create-stable-diffusion-model.component";
 import {UserInfoComponent} from "./pages/users/user-info/user-info.component";
 
 registerLocaleData(en);

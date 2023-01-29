@@ -17,7 +17,8 @@ export class CreateStableDiffusionModelComponent implements OnInit {
   ngOnInit(): void {
     this.validateForm = this.fb.group({
       modelName: [null, [Validators.required]],
-      dockerImageTag: [null, [Validators.required]]
+      dockerImageTag: [null, [Validators.required]],
+      imageResolution: [null, [Validators.required]]
     });
   }
   submitForm(): void {

@@ -4,7 +4,7 @@
 <nz-table #basicTable [nzData]="tasks">
   <thead>
   <tr>
-    <th>Model name</th>
+    <th>SD Model</th>
     <th>Instance name</th>
     <th>Time</th>
     <th>Information</th>
@@ -14,7 +14,14 @@
   </thead>
   <tbody>
   <tr *ngFor="let data of basicTable.data">
-    <td>{{ data.stableDiffusionModel.modelName }}</td>
+    <td>
+      <p>
+        {{ data.stableDiffusionModel.modelName }}
+      </p>
+      <p>
+        Resolution: {{data.stableDiffusionModel.imageResolution}}x{{data.stableDiffusionModel.imageResolution}}
+      </p>
+    </td>
     <td>{{ data.instanceName }}</td>
     <td>
       <p>Created: {{ data.createdDate }} </p>

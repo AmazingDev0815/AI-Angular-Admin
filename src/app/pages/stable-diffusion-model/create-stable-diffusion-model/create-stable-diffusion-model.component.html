@@ -11,6 +11,21 @@
       <input nz-input id="dockerImageTag" formControlName="dockerImageTag"/>
     </nz-form-control>
   </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="imageResolution" nzRequired>Image resolution</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input image resolution!">
+      <nz-select id="imageResolution" formControlName="imageResolution">
+        <nz-option
+          nzLabel="512x512"
+          nzValue=512
+        ></nz-option>
+        <nz-option
+          nzLabel="768x768"
+          nzValue=768
+        ></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
   <nz-form-item nz-row class="register-area">
     <nz-form-control [nzSpan]="14" [nzOffset]="6">
       <button nz-button nzType="primary">Save</button>

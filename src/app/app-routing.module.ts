@@ -13,10 +13,10 @@ import {CreateTaskComponent} from "./pages/tasks/create-task/create-task.compone
 import {DetailComponent} from "./pages/image-collection/detail/detail.component";
 import {
   CreateStableDiffusionModelComponent
-} from "./pages/create-stable-diffusion-mode/create-stable-diffusion-model/create-stable-diffusion-model.component";
+} from "./pages/stable-diffusion-model/create-stable-diffusion-model/create-stable-diffusion-model.component";
 import {
   StableDiffusionModelListComponent
-} from "./pages/create-stable-diffusion-mode/stable-diffusion-model-list/stable-diffusion-model-list.component";
+} from "./pages/stable-diffusion-model/stable-diffusion-model-list/stable-diffusion-model-list.component";
 import {AuthorizationGuard} from "./guard/authorization.guard";
 
 const routes: Routes = [
