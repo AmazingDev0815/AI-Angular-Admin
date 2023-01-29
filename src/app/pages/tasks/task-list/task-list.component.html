@@ -1,5 +1,4 @@
 <button style="float: right; margin-bottom: 1em; margin-left: 1em"  routerLink="/tasks/create" nz-button nzType="primary">Create task</button>
-<button style="float: right; margin-bottom: 1em"  (click)="reload()" nz-button  nzType="default">Refresh</button>
 
 <nz-table #basicTable [nzData]="tasks">
   <thead>
@@ -47,7 +46,7 @@
         <button routerLink="/collections/detail?id={{data.collectionId}}" *ngIf="data.status.value == 10"  nz-button nzType="dashed">Go to result</button>
       </p>
       <p>
-        <button *ngIf="data.status.value != 10"  (click)="stop(data.id)" nz-button nzDanger nzType="primary">Stop</button>
+        <button *ngIf="data.status.value != 10" nz-button nzLoading nzType="primary">Training</button>
       </p>
     </td>
   </tr>

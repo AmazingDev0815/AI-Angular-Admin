@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ApiService} from "../../../services/api/api.service";
 
 @Component({
@@ -6,15 +6,20 @@ import {ApiService} from "../../../services/api/api.service";
   templateUrl: './task-list.component.html',
   styleUrls: ['./task-list.component.css']
 })
-export class TaskListComponent implements OnInit {
+export class TaskListComponent implements OnInit, OnDestroy {
   tasks: any[] = []
+  interval: any
   constructor(private apiService:ApiService) {
   }
 
   ngOnInit(): void {
-    this.apiService.getTasks().subscribe((data:any)=>{
-      this.tasks = data.items;
-    })
+    this.load();
+    this.interval = setInterval( this.load, 5000)
+  }
+
+  ngOnDestroy(): void {
+    this.load();
+    clearInterval(this.interval)
   }
 
   stop(id:string) {
@@ -22,7 +27,7 @@ export class TaskListComponent implements OnInit {
     })
   }
 
-  reload() {
+  load() {
     this.apiService.getTasks().subscribe((data:any)=>{
       this.tasks = data.items;
     })
