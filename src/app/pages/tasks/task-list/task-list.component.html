@@ -4,9 +4,8 @@
   <thead>
   <tr>
     <th>SD Model</th>
-    <th>Instance name</th>
-    <th>Time</th>
     <th>Information</th>
+    <th>Time</th>
     <th [nzWidth]='"250px"'>Status</th>
     <th>Action</th>
   </tr>
@@ -21,15 +20,15 @@
         Resolution: {{data.stableDiffusionModel.imageResolution}}x{{data.stableDiffusionModel.imageResolution}}
       </p>
     </td>
-    <td>{{ data.instanceName }}</td>
+    <td>
+      <p>Instance name: {{ data.instanceName }} </p>
+      <p>Text Encoder Step: {{ data.training.textEncoder.steps}} </p>
+      <p>Unet Step: {{ data.training.unet.steps}} </p>
+    </td>
     <td>
       <p>Created: {{ data.createdDate }} </p>
       <p>Started: {{ data.startedDate }} </p>
       <p>Completed: {{ data.completedDate }} </p>
-    </td>
-    <td>
-      <p>Text Encoder Step: {{ data.training.textEncoder.steps}} </p>
-      <p>Unet Step: {{ data.training.unet.steps}} </p>
     </td>
     <td>
       <p style="font-weight: bold"> {{ data.status.name }}</p>
