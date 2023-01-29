@@ -46,7 +46,7 @@
         <button routerLink="/collections/detail?id={{data.collectionId}}" *ngIf="data.status.value == 10"  nz-button nzType="primary">Go to result</button>
       </p>
       <p>
-        <button *ngIf="data.status.value != 10" nz-button nzLoading nzType="dashed">Training</button>
+        <button *ngIf="data.status.value > 0 && data.status.value < 10" nz-button nzLoading nzType="dashed">Processing</button>
       </p>
     </td>
   </tr>
