@@ -1,15 +1,19 @@
 <nz-table #basicTable [nzData]="collections">
   <thead>
   <tr>
+    <th>No</th>
     <th>Created Date</th>
+    <th>Number of images</th>
     <th>Action</th>
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let data of basicTable.data">
+  <tr *ngFor="let data of basicTable.data; let i = index">
     <td>{{ data.createdDate }}</td>
-    <td></td>
+    <td>{{ i }}</td>
+    <td>{{ data.images.length}}</td>
     <td>
+      <button routerLink="/collections/detail{{data.id}}" nz-button nzType="primary">View collection</button>
     </td>
   </tr>
   </tbody>
