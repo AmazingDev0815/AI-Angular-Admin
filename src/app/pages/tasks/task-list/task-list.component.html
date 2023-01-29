@@ -43,10 +43,10 @@
         <a *ngIf="data.status.value == 10" href="{{data.checkpointFilePath}}">Download .ckpt file</a>
       </p>
       <p>
-        <button routerLink="/collections/detail?id={{data.collectionId}}" *ngIf="data.status.value == 10"  nz-button nzType="dashed">Go to result</button>
+        <button routerLink="/collections/detail?id={{data.collectionId}}" *ngIf="data.status.value == 10"  nz-button nzType="primary">Go to result</button>
       </p>
       <p>
-        <button *ngIf="data.status.value != 10" nz-button nzLoading nzType="primary">Training</button>
+        <button *ngIf="data.status.value != 10" nz-button nzLoading nzType="dashed">Training</button>
       </p>
     </td>
   </tr>
