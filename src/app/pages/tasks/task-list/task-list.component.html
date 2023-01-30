@@ -32,9 +32,9 @@
     </td>
     <td>
       <p style="font-weight: bold"> {{ data.status.name }}</p>
-      <nz-progress [nzPercent]="data.training.textEncoder.trainedSteps*100/ data.training.textEncoder.steps" [nzStatus]="data.status.value <= 2 ? 'active' : 'success'">
+      <nz-progress [nzPercent]="(data.training.textEncoder.trainedSteps*100 / data.training.textEncoder.steps).toFixed(0)" [nzStatus]="data.status.value <= 2 ? 'active' : 'success'">
       </nz-progress>
-      <nz-progress [nzPercent]="data.training.unet.trainedSteps*100/ data.training.unet.steps" [nzStatus]="data.status.value <= 3 ? 'active' : 'success'">
+      <nz-progress [nzPercent]="(data.training.unet.trainedSteps*100/ data.training.unet.steps).toFixed(0)" [nzStatus]="data.status.value <= 3 ? 'active' : 'success'">
       </nz-progress>
     </td>
     <td>
@@ -42,7 +42,7 @@
         <a *ngIf="data.status.value == 10" href="{{data.checkpointFilePath}}">Download .ckpt file</a>
       </p>
       <p>
-        <button routerLink="/collections/detail/{{data.collectionId}}" *ngIf="data.status.value == 10"  nz-button nzType="primary">Go to result</button>
+        <button routerLink="/collections/detail/{{data.imageCollectionId}}" *ngIf="data.status.value == 10"  nz-button nzType="primary">Go to result</button>
       </p>
       <p>
         <button *ngIf="data.status.value > 0 && data.status.value < 10" nz-button nzLoading nzType="dashed">Processing</button>
