@@ -206,4 +206,13 @@ export class ApiService {
     })
     return this.httpClient.put(url,{ headers });
   }
+
+  getNumberOfAvailableInstances() {
+    let url = `${this.BASE_URL}/gpu-instances/available-count`;
+    let headers = new HttpHeaders({
+      // @ts-ignore
+      Authorization: this.userContext.AccessToken
+    })
+    return this.httpClient.get(url,{ headers });
+  }
 }

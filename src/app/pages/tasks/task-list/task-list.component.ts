@@ -9,6 +9,7 @@ import {ApiService} from "../../../services/api/api.service";
 export class TaskListComponent implements OnInit, OnDestroy {
   tasks: any[] = []
   interval: any
+  numberOfAvailableInstances: any = 0;
   constructor(private apiService:ApiService) {
   }
 
@@ -29,6 +30,9 @@ export class TaskListComponent implements OnInit, OnDestroy {
   load(apiService: ApiService) {
     apiService.getTasks().subscribe((data:any)=>{
       this.tasks = data.items;
+    })
+    apiService.getNumberOfAvailableInstances().subscribe((data:any)=>{
+      this.numberOfAvailableInstances = data
     })
   }
 }
