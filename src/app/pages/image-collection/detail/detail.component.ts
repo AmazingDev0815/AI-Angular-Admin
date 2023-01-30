@@ -12,8 +12,8 @@ export class DetailComponent implements OnInit {
   images : any[]= []
   ngOnInit(): void {
     let id = this.route.snapshot.paramMap.get('id');
-    this.apiService.getImageCollection(id).subscribe((data:any)=>{
-      this.images = data
+    this.apiService.getImageCollection(id).subscribe((collection:any)=>{
+      this.images = collection.images
     })
   }
 
