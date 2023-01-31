@@ -27,7 +27,7 @@ export class CreateTaskComponent implements OnInit {
     this.apiService.getUserPhotos().subscribe((data:any) =>{
       let userPhotos = data.items;
       this.validateForm.get('numberOfTrainingTextEncoderSteps')?.setValue(userPhotos.length*25);
-      this.validateForm.get('numberOfTrainingUnetSteps')?.setValue(userPhotos.length*75);
+      this.validateForm.get('numberOfTrainingUnetSteps')?.setValue(userPhotos.length*175);
     });
 
     this.apiService.getPrompts().subscribe((data:any) => {
