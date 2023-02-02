@@ -140,6 +140,8 @@ export class ApiService {
   }
   createUser(command: CreateUserCommand){
     let url = `${this.BASE_URL}/admin/users`;
+    command.gender = Number(command.gender)
+    console.log(command)
     return this.httpClient.post(url,command);
   }
 
