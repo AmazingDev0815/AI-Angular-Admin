@@ -3,5 +3,6 @@ export interface CreateUserCommand{
   password:string,
   confirmPassword:string,
   email:string,
-  name:string
+  name:string,
+  gender: number
 }

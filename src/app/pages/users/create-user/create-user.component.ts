@@ -26,9 +26,8 @@ export class CreateUserComponent implements OnInit{
     if (this.validateForm.valid) {
       console.log('submit', this.validateForm.value);
       this.apiService.createUser(this.validateForm.value).subscribe((res : any) => {
-        console.log(res);
         this.router.navigate(["users/list"]).then(r => {})
-      })
+      });
     } else {
       Object.values(this.validateForm.controls).forEach(control => {
         if (control.invalid) {
