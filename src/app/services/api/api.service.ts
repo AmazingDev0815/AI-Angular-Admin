@@ -150,7 +150,7 @@ export class ApiService {
       // @ts-ignore
       Authorization: this.userContext.AccessToken
     })
-    console.log(command)
+    command.gender = Number(command.gender)
     return this.httpClient.post(url,command, { headers });
   }
 
