@@ -12,12 +12,22 @@
           Delete <span nz-icon nzType="delete"></span>
         </button>
       </div>
-      <div nz-col nzSpan="6" >
+      <div nz-col nzSpan="3" >
         <img
           style="float: right;"
           nz-image
-          width="150px"
-          height="150px"
+          width="100px"
+          height="100px"
+          [nzSrc]="prompt.initImagePath"
+          alt="No init image"
+        />
+      </div>
+      <div nz-col nzSpan="3" >
+        <img
+          style="float: right;"
+          nz-image
+          width="100px"
+          height="100px"
           [nzSrc]="prompt.exampleImagePath"
           alt="No example image"
         />
