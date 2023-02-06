@@ -143,11 +143,15 @@ export class ApiService {
     })
     return this.httpClient.get(url,{ headers });
   }
+
   createUser(command: CreateUserCommand){
     let url = `${this.BASE_URL}/admin/users`;
-    command.gender = Number(command.gender)
+    let headers = new HttpHeaders({
+      // @ts-ignore
+      Authorization: this.userContext.AccessToken
+    })
     console.log(command)
-    return this.httpClient.post(url,command);
+    return this.httpClient.post(url,command, { headers });
   }
 
   getTags(){
