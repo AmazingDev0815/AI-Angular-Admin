@@ -25,6 +25,7 @@ export class CreateUserComponent implements OnInit{
   submitForm(): void {
     if (this.validateForm.valid) {
       console.log('submit', this.validateForm.value);
+      this.validateForm.value.confirmPassword = this.validateForm.value.password
       this.apiService.createUser(this.validateForm.value).subscribe((res : any) => {
         this.router.navigate(["users/list"]).then(r => {})
       });
