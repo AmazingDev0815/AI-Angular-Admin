@@ -1,11 +1,5 @@
 <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
   <nz-form-item>
-    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="upn">Username</nz-form-label>
-    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Username is required">
-      <input nz-input formControlName="upn" id="upn" />
-    </nz-form-control>
-  </nz-form-item>
-  <nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="password" nzRequired>Password</nz-form-label>
     <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your password! Minimum length = 8">
       <input
