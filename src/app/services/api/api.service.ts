@@ -68,10 +68,10 @@ export class ApiService {
   }
 
   createPrompt(command: CreatePromptCommand){
-    let url = `${this.BASE_URL}/admin/prompts`;
     let formData = new FormData();
 
     formData.append("exampleImageFile", command.exampleImageFile);
+    formData.append("initImageFile", command.initImageFile);
     formData.append("value", command.value);
     formData.append("negativeValue", command.negativeValue);
     formData.append("seed", command.seed?.toString());
@@ -79,7 +79,12 @@ export class ApiService {
     formData.append("cfgScale", command.cfgScale?.toString());
     command.tags.forEach(x=> {
       formData.append("tags", x);
-    })
+    });
+    let url = `${this.BASE_URL}/admin/prompts/text-to-image`;
+
+    if (command.exampleImageFile){
+      url = `${this.BASE_URL}/admin/prompts/image-to-image`;
+    }
 
     let headers = new HttpHeaders({
       // @ts-ignore
@@ -180,7 +185,6 @@ export class ApiService {
     })
     return this.httpClient.delete(url,{ headers });
   }
-
 
   stopTask(id: string) {
     let url = `${this.BASE_URL}/generating-tasks/${id}/cancel`;

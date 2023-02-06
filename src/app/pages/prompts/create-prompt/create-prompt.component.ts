@@ -14,6 +14,7 @@ export class CreatePromptComponent implements OnInit {
   tags : string[] = [];
   selectedTags: string[] = [];
   exampleImageFiles: NzUploadFile[] = [];
+  initImageFiles: NzUploadFile[] = [];
 
   constructor(private fb: UntypedFormBuilder,
               private apiService: ApiService,
@@ -42,6 +43,7 @@ export class CreatePromptComponent implements OnInit {
     if (this.validateForm.valid) {
       console.log('submit', this.validateForm.value);
       this.validateForm.value.exampleImageFile = this.exampleImageFiles.at(0)?.originFileObj;
+      this.validateForm.value.initImageFile = this.initImageFiles.at(0)?.originFileObj;
       this.apiService.createPrompt(this.validateForm.value).subscribe((data:any)=>{
         this.router.navigate(["prompts/list"]).then(r => {})
       })

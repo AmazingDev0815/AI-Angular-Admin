@@ -7,6 +7,7 @@ export interface CreatePromptCommand{
   numberOfInferenceSteps: number,
   cfgScale: number,
   exampleImageFile: File,
+  initImageFile: File,
   tags: string[]
 }
 
