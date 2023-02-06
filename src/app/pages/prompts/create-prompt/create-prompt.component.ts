@@ -28,9 +28,11 @@ export class CreatePromptComponent implements OnInit {
     this.validateForm = this.fb.group({
       value: [null, [Validators.required]],
       negativeValue: [null, [Validators.required]],
-      cfgScale: [7, [Validators.required]],
+      cfgScale: [7.5, [Validators.required]],
       numberOfInferenceSteps: [20, [Validators.required]],
       exampleImageFile: [null],
+      denoisingStrength: [0.75],
+      isDisabled: [false],
       seed: [-1, [Validators.required]],
       tags: [[]],
     });

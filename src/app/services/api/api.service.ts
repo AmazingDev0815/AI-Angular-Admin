@@ -77,12 +77,14 @@ export class ApiService {
     formData.append("seed", command.seed?.toString());
     formData.append("numberOfInferenceSteps", command.numberOfInferenceSteps?.toString());
     formData.append("cfgScale", command.cfgScale?.toString());
+    formData.append("denoisingStrength", command.denoisingStrength?.toString());
+
     command.tags.forEach(x=> {
       formData.append("tags", x);
     });
     let url = `${this.BASE_URL}/admin/prompts/text-to-image`;
 
-    if (command.exampleImageFile){
+    if (command.exampleImageFile?.size > 0){
       url = `${this.BASE_URL}/admin/prompts/image-to-image`;
     }
 

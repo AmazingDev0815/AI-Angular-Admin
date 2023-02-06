@@ -68,7 +68,6 @@
               />
             </nz-form-control>
           </nz-form-item>
-
           <nz-form-item >
             <nz-form-label [nzSm]="6" [nzXs]="24" > Prompt </nz-form-label>
             <nz-form-control [nzSm]="14" [nzXs]="24" >
@@ -103,6 +102,12 @@
             <nz-form-label [nzSm]="6" [nzXs]="24" > CFG Scale </nz-form-label>
             <nz-form-control [nzSm]="14" [nzXs]="24" >
               <input type="number" step=".1" nz-input formControlName="cfgScale" />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item *ngIf="prompt.type == 1" >
+            <nz-form-label [nzSm]="6" [nzXs]="24" > Denoising Strength</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" >
+              <input type="number" step=".01" nz-input formControlName="denoisingStrength" />
             </nz-form-control>
           </nz-form-item>
         </nz-card>

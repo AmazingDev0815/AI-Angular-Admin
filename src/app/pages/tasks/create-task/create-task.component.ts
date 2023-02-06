@@ -42,7 +42,8 @@ export class CreateTaskComponent implements OnInit {
           seed: [prompt.seed],
           sampler: [prompt.sampler],
           numberOfInferenceSteps: [prompt.numberOfInferenceSteps],
-          cfgScale: [prompt.cfgScale]
+          cfgScale: [prompt.cfgScale],
+          denoisingStrength: [prompt.denoisingStrength]
         }))
       }
     });

@@ -2,11 +2,16 @@
 <div *ngFor="let prompt of prompts" >
   <nz-card >
     <div nz-row>
-      <div nz-col nzSpan="18" >
+      <div nz-col nzSpan="20" >
         <p>Prompt: {{prompt.value}}</p>
         <p>Negative Prompt: {{prompt.negativeValue}}</p>
         <p>Tags:
           <nz-tag  *ngFor="let tag of prompt.tags" [nzColor]="'magenta'">{{tag}}</nz-tag>
+        </p>
+        <p>Params: CFG Scale={{prompt.cfgScale}};
+          Denoising Strength: {{prompt.denoisingStrength}};
+          Number of inference steps= {{prompt.numberOfInferenceSteps}};
+          Seed={{prompt.seed}};
         </p>
         <button type="button" (click)="delete(prompt.id)" nz-button nzDanger  nzType="primary">
           Delete <span nz-icon nzType="delete"></span>
@@ -16,8 +21,8 @@
         <img
           style="float: right;"
           nz-image
-          width="100px"
-          height="100px"
+          width="125px"
+          height="125px"
           [nzSrc]="prompt.initImagePath"
           alt="No init image"
         />
@@ -26,8 +31,8 @@
         <img
           style="float: right;"
           nz-image
-          width="100px"
-          height="100px"
+          width="125px"
+          height="125px"
           [nzSrc]="prompt.exampleImagePath"
           alt="No example image"
         />
