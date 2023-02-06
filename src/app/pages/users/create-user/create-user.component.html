@@ -1,5 +1,18 @@
 <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
   <nz-form-item>
+    <nz-form-label
+      [nzSm]="6"
+      [nzXs]="24"
+      nzFor="email"
+      nzRequired
+    >
+      <span>Email</span>
+    </nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your email!">
+      <input nz-input id="email" formControlName="email" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="password" nzRequired>Password</nz-form-label>
     <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your password! Minimum length = 8">
       <input
@@ -21,19 +34,6 @@
     </nz-form-label>
     <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your name!">
       <input nz-input id="name" formControlName="name" />
-    </nz-form-control>
-  </nz-form-item>
-  <nz-form-item>
-    <nz-form-label
-      [nzSm]="6"
-      [nzXs]="24"
-      nzFor="email"
-      nzRequired
-    >
-      <span>Email</span>
-    </nz-form-label>
-    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your email!">
-      <input nz-input id="email" formControlName="email" />
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>

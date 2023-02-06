@@ -15,9 +15,9 @@ export class CreateUserComponent implements OnInit{
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
+      email: [null, [Validators.email]],
       password: [null, [Validators.required]],
       name: [null, [Validators.required]],
-      email: [null, [Validators.required]],
       gender: [null, [Validators.required]],
     });
   }
