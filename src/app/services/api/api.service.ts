@@ -18,11 +18,24 @@ export class ApiService {
 
   }
 
+  getGoogleOAuthUrl(){
+    let url = `${this.BASE_URL}/authentication/get-oauth-info`;
+    return this.httpClient.get(url);
+  }
+
   getAccessToken(upn: string, password: string){
     let url = `${this.BASE_URL}/authentication/token`;
     return this.httpClient.post(url, {
       "upn": upn,
       "password": password
+    });
+  }
+
+  getGoogleOAuthAccessToken(code: string, redirectUri: string){
+    let url = `${this.BASE_URL}/authentication/oauth-token`;
+    return this.httpClient.post(url, {
+      "code": code,
+      "redirectUri": redirectUri
     });
   }
 

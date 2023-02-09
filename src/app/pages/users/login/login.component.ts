@@ -1,7 +1,7 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
 import {UserContext} from "../../../services/user-context/user.context";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {ApiService} from "../../../services/api/api.service";
 
 @Component({
@@ -11,19 +11,41 @@ import {ApiService} from "../../../services/api/api.service";
 })
 export class LoginComponent implements OnInit{
   validateForm!: UntypedFormGroup;
+  googleOAuthUrl : string = "";
+
   constructor(private apiService: ApiService,
               private fb: UntypedFormBuilder,
               public userContext: UserContext,
-              private router: Router) {
+              private router: Router,
+              private route: ActivatedRoute) {
     this.isAuthenticated = this.userContext.IsAuthenticated();
   }
+
   @Input() isAuthenticated: boolean = false;
 
   ngOnInit(): void {
-      this.validateForm = this.fb.group({
-        upn: [null, [Validators.required]],
-        password: [null, [Validators.required]]
-      });
+    let redirectUri = window.location.origin + "/google-oauth";
+    this.apiService.getGoogleOAuthUrl().subscribe((data:any)=>{
+      this.googleOAuthUrl = data.authUrl;
+      this.googleOAuthUrl = this.googleOAuthUrl.replace("{{redirect_uri}}", redirectUri);
+    })
+
+    this.route.queryParamMap.subscribe((queryParams) => {
+      const code = queryParams.get('code');
+      if (code){
+        this.apiService.getGoogleOAuthAccessToken(code,redirectUri).subscribe((data: any)=>{
+          this.userContext.setAccessToken(data.accessToken);
+          this.userContext.setUpn(data.upn);
+          this.router.navigate(["users/login"]).then(r => {})
+          this.isAuthenticated = true;
+        })
+      }
+    });
+
+    this.validateForm = this.fb.group({
+      upn: [null, [Validators.required]],
+      password: [null, [Validators.required]]
+    });
   }
 
   logout(){

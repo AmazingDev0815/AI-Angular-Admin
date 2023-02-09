@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  BASE_URL: "https://avatar-service-test-hwj6miv7nq-uc.a.run.app"
+  BASE_URL: "https://localhost:44301"
 };
 
 /*

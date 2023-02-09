@@ -14,6 +14,7 @@
     </nz-form-control>
   </nz-form-item>
   <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Log in</button>
+  <a [href]="googleOAuthUrl" nz-button class="login-form-button login-form-margin" [nzType]="'dashed'"><span nz-icon nzType="google" nzTheme="outline"></span> Log in with Google</a>
 </form>
 <div *ngIf="isAuthenticated" >
   <p>

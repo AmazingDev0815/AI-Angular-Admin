@@ -22,6 +22,7 @@ import {AuthorizationGuard} from "./guard/authorization.guard";
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'users/login' },
   { path: 'users/login', component: LoginComponent},
+  { path: 'google-oauth', component: LoginComponent},
   { path: 'users/create', component: CreateUserComponent},
   { path: 'users/list', component: UserListComponent , canActivate: [AuthorizationGuard]},
   { path: 'user-photos/list', component: UserPhotoListComponent , canActivate: [AuthorizationGuard]},
