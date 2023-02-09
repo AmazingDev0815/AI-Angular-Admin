@@ -25,9 +25,8 @@ export class LoginComponent implements OnInit{
 
   ngOnInit(): void {
     let redirectUri = window.location.origin + "/google-oauth";
-    this.apiService.getGoogleOAuthUrl().subscribe((data:any)=>{
+    this.apiService.getGoogleOAuthUrl(redirectUri).subscribe((data:any)=>{
       this.googleOAuthUrl = data.authUrl;
-      this.googleOAuthUrl = this.googleOAuthUrl.replace("{{redirect_uri}}", redirectUri);
     })
 
     this.route.queryParamMap.subscribe((queryParams) => {
