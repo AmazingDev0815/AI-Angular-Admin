@@ -19,8 +19,11 @@ export class ApiService {
   }
 
   getGoogleOAuthUrl(redirectUri:string){
-    let url = `${this.BASE_URL}/authentication/oauth-url?redirectUri=${redirectUri}`;
-    return this.httpClient.get(url);
+    let url = `${this.BASE_URL}/authentication/oauth-url`;
+    return this.httpClient.post(url,{
+      "redirectUri": redirectUri,
+      "type": 0
+    });
   }
 
   getAccessToken(upn: string, password: string){
