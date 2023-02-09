@@ -19,7 +19,7 @@ export class ApiService {
   }
 
   getGoogleOAuthUrl(redirectUri:string){
-    let url = `${this.BASE_URL}/authentication/get-oauth-info?redirectUri=${redirectUri}`;
+    let url = `${this.BASE_URL}/authentication/oauth-url?redirectUri=${redirectUri}`;
     return this.httpClient.get(url);
   }
 
