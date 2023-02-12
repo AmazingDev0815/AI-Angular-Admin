@@ -12,9 +12,5 @@ export class TaskDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.apiService.getTasks().subscribe((data:any)=>{
-      this.tasks = data.items;
-    })
   }
-
 }

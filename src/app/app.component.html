@@ -18,15 +18,21 @@
             <a routerLink="/user-photos/list" >User Photos</a>
           </li>
           <li nz-menu-item nzMatchRouter>
-            <a routerLink="/tasks/list">Dreambooth Tasks</a>
+            <a routerLink="/tasks/list/user">Dreambooth Tasks</a>
           </li>
           <li nz-menu-item nzMatchRouter>
-            <a routerLink="/collections/list">Image Collection </a>
+            <a routerLink="/collections/list/user">Image Collection </a>
           </li>
         </ul>
       </li>
       <li nz-submenu nzOpen nzTitle="System Management" nzIcon="setting">
         <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/tasks/list">All Task</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/collections/list">All Collection</a>
+          </li>
           <li nz-menu-item nzMatchRouter>
             <a routerLink="/prompts/create">Create prompt</a>
           </li>

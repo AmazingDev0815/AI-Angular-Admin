@@ -1,6 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ApiService} from "../../../services/api/api.service";
 import {UserContext} from "../../../services/user-context/user.context";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-task-list',
@@ -12,7 +13,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
   interval: any
   numberOfAvailableInstances: number = 0;
   credit: number = 0;
-  constructor(private apiService:ApiService, private userContext:UserContext) {
+  constructor(private apiService:ApiService, private userContext:UserContext, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
@@ -34,9 +35,17 @@ export class TaskListComponent implements OnInit, OnDestroy {
   }
 
   load(apiService: ApiService) {
-    apiService.getTasks().subscribe((data:any)=>{
-      this.tasks = data.items;
-    })
+    const user = this.route.snapshot.paramMap.get('user');
+    if (user){
+      apiService.getTasks(true).subscribe((data:any)=>{
+        this.tasks = data.items;
+      })
+    }
+    else {
+      apiService.getTasks(false).subscribe((data:any)=>{
+        this.tasks = data.items;
+      })
+    }
     apiService.getNumberOfAvailableInstances().subscribe((data:any)=>{
       this.numberOfAvailableInstances = data
     })

@@ -110,8 +110,8 @@ export class ApiService {
     })
     return this.httpClient.post(url, formData, { headers });
   }
-  getTasks(){
-    let url = `${this.BASE_URL}/generating-tasks?pageSize=100`;
+  getTasks(filterByUser: boolean){
+    let url = `${this.BASE_URL}/generating-tasks?filterByUser=${filterByUser}&pageSize=100`;
     let headers = new HttpHeaders({
       // @ts-ignore
       Authorization: this.userContext.AccessToken
@@ -136,8 +136,8 @@ export class ApiService {
     return this.httpClient.post(url, command, { headers });
   }
 
-  getImageCollections(){
-    let url = `${this.BASE_URL}/image-collections`;
+  getImageCollections(filterByUser : boolean = false){
+    let url = `${this.BASE_URL}/image-collections?FilterByUser=${filterByUser}`;
     let headers = new HttpHeaders({
       // @ts-ignore
       Authorization: this.userContext.AccessToken

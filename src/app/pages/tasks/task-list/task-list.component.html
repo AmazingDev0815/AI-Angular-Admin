@@ -9,6 +9,7 @@
   <thead>
   <tr>
     <th>SD Model</th>
+    <th>User</th>
     <th>Information</th>
     <th>Time</th>
     <th [nzWidth]='"250px"'>Status</th>
@@ -25,6 +26,7 @@
         Resolution: {{data.stableDiffusionModel.imageResolution}}x{{data.stableDiffusionModel.imageResolution}}
       </p>
     </td>
+    <td>{{data.user.upn}}</td>
     <td>
       <p>Instance name: {{ data.instanceName }} </p>
       <p>Text Encoder Step: {{ data.training.textEncoder.steps}} </p>

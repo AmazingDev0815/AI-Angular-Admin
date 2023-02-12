@@ -3,6 +3,7 @@
   <tr>
     <th>No</th>
     <th>Created Date</th>
+    <th>User</th>
     <th>Number of images</th>
     <th>Action</th>
   </tr>
@@ -11,6 +12,7 @@
   <tr *ngFor="let data of basicTable.data; let i = index">
     <td>{{ i+1 }}</td>
     <td>{{ data.createdDate }}</td>
+    <td>{{ data.user.upn }}</td>
     <td>{{ data.images.length}}</td>
     <td>
       <button routerLink="/collections/detail/{{data.id}}" nz-button nzType="primary">View collection</button>
