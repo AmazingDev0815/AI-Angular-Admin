@@ -9,10 +9,10 @@ import {UserContext} from "../../../services/user-context/user.context";
 export class UserInfoComponent implements OnInit {
 
   constructor(public userContext:UserContext) {
-
   }
-
+  
   ngOnInit(): void {
+
   }
 
 }

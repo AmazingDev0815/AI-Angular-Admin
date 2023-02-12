@@ -12,10 +12,14 @@ export class CreateTaskComponent implements OnInit {
   prompts: any[] = []
   stableDiffusionModels:  any[] = []
   validateForm!: UntypedFormGroup;
-  constructor(private apiService:ApiService, private router:Router, private fb: UntypedFormBuilder) {
+
+  constructor(private apiService: ApiService,
+              private router: Router,
+              private fb: UntypedFormBuilder) {
   }
 
   ngOnInit(): void {
+
     this.validateForm = this.fb.group({
       instanceName: ["u8s0b1enq6pz3o", [Validators.required]],
       stableDiffusionModelId: ['', [Validators.required]],

@@ -46,6 +46,7 @@ import {
   CreateStableDiffusionModelComponent
 } from "./pages/stable-diffusion-model/create-stable-diffusion-model/create-stable-diffusion-model.component";
 import {UserInfoComponent} from "./pages/users/user-info/user-info.component";
+import {PaymentComponent} from "./pages/payment/payment/payment.component";
 
 registerLocaleData(en);
 
@@ -67,6 +68,7 @@ registerLocaleData(en);
     StableDiffusionModelListComponent,
     CreateStableDiffusionModelComponent,
     UserInfoComponent,
+    PaymentComponent,
   ],
   imports: [
     BrowserModule,

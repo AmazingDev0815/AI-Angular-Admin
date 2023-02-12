@@ -1,5 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ApiService} from "../../../services/api/api.service";
+import {UserContext} from "../../../services/user-context/user.context";
 
 @Component({
   selector: 'app-task-list',
@@ -9,13 +10,18 @@ import {ApiService} from "../../../services/api/api.service";
 export class TaskListComponent implements OnInit, OnDestroy {
   tasks: any[] = []
   interval: any
-  numberOfAvailableInstances: any = 0;
-  constructor(private apiService:ApiService) {
+  numberOfAvailableInstances: number = 0;
+  credit: number = 0;
+  constructor(private apiService:ApiService, private userContext:UserContext) {
   }
 
   ngOnInit(): void {
     this.load(this.apiService);
     this.interval = setInterval(() => this.load(this.apiService), 5000)
+
+    this.apiService.getUserInfo().subscribe((data:any) => {
+      this.credit = data.credit;
+    });
   }
 
   ngOnDestroy(): void {

@@ -153,8 +153,8 @@ export class ApiService {
     })
     return this.httpClient.get(url,{ headers });
   }
-  getUserInfo(upn: string){
-    let url = `${this.BASE_URL}/users/${upn}`;
+  getUserInfo(){
+    let url = `${this.BASE_URL}/users/${this.userContext.Upn}`;
     let headers = new HttpHeaders({
       // @ts-ignore
       Authorization: this.userContext.AccessToken
@@ -242,5 +242,14 @@ export class ApiService {
       Authorization: this.userContext.AccessToken
     })
     return this.httpClient.get(url,{ headers });
+  }
+
+  depositPayment(sessionId: string | null) {
+    let url = `${this.BASE_URL}/payment/${sessionId}`;
+    let headers = new HttpHeaders({
+      // @ts-ignore
+      Authorization: this.userContext.AccessToken
+    })
+    return this.httpClient.post(url,{} ,{ headers });
   }
 }

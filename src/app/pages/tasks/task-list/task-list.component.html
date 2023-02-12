@@ -1,6 +1,10 @@
-Number of available GPU instances: {{numberOfAvailableInstances}}
-<button style="float: right; margin-bottom: 1em; margin-left: 1em"  routerLink="/tasks/create" nz-button nzType="primary">Create task</button>
+<p>Number of available GPU instances: {{numberOfAvailableInstances}}</p>
+<p>Current Balance Credit: <b>{{credit}} </b>
+  <a href="https://buy.stripe.com/test_8wMdSf2pC2Nn1ZC9AA" nz-button class="login-form-button login-form-margin" [nzType]="'dashed'">
+ Add credits
+</a>  </p>
 
+<button style="margin-bottom: 1em"  routerLink="/tasks/create" nz-button nzType="primary"> Create task </button> Cost: 100 credit/task
 <nz-table #basicTable [nzData]="tasks">
   <thead>
   <tr>

@@ -18,6 +18,7 @@ import {
   StableDiffusionModelListComponent
 } from "./pages/stable-diffusion-model/stable-diffusion-model-list/stable-diffusion-model-list.component";
 import {AuthorizationGuard} from "./guard/authorization.guard";
+import {PaymentComponent} from "./pages/payment/payment/payment.component";
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'users/login' },
@@ -35,6 +36,7 @@ const routes: Routes = [
   { path: 'collections/detail/:id', component: DetailComponent , canActivate: [AuthorizationGuard]},
   { path: 'stable-diffusion-models/create', component: CreateStableDiffusionModelComponent, canActivate: [AuthorizationGuard] },
   { path: 'stable-diffusion-models/list', component: StableDiffusionModelListComponent , canActivate: [AuthorizationGuard]},
+  { path: 'payment', component: PaymentComponent , canActivate: [AuthorizationGuard]},
 ];
 
 @NgModule({
