@@ -65,8 +65,8 @@ export class ApiService {
     return this.httpClient.get(url,{ headers });
   }
 
-  getPrompts(){
-    let url = `${this.BASE_URL}/admin/prompts?pageSize=100`;
+  getPrompts(genderFilter: boolean){
+    let url = `${this.BASE_URL}/admin/prompts?genderFilter=${genderFilter}&pageSize=100`;
     let headers = new HttpHeaders({
       // @ts-ignore
       Authorization: this.userContext.AccessToken

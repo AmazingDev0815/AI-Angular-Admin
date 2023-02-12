@@ -34,7 +34,7 @@ export class CreateTaskComponent implements OnInit {
       this.validateForm.get('numberOfTrainingUnetSteps')?.setValue(userPhotos.length*150);
     });
 
-    this.apiService.getPrompts().subscribe((data:any) => {
+    this.apiService.getPrompts(true).subscribe((data:any) => {
       this.prompts = data.items;
       for (let prompt of this.prompts) {
         (this.validateForm.get('prompts') as FormArray).push(this.fb.group({

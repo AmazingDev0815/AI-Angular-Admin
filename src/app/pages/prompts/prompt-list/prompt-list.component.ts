@@ -16,7 +16,7 @@ export class PromptListComponent implements OnInit {
   }
 
   getPrompts(){
-    this.apiService.getPrompts().subscribe((data:any)=>{
+    this.apiService.getPrompts(false).subscribe((data:any)=>{
       this.prompts = data.items;
     })
   }
