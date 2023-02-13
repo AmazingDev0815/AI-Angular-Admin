@@ -128,7 +128,7 @@ export class ApiService {
     return this.httpClient.get(url,{ headers });
   }
   createTask(command: CreateGeneratingTaskCommand){
-    let url = `${this.BASE_URL}/generating-tasks`;
+    let url = `${this.BASE_URL}/generating-tasks/test`;
     let headers = new HttpHeaders({
       // @ts-ignore
       Authorization: this.userContext.AccessToken
