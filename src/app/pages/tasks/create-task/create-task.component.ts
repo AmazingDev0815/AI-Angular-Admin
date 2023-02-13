@@ -65,7 +65,7 @@ export class CreateTaskComponent implements OnInit {
       command.prompts = command.prompts.filter((p:any) => p.active);
       this.apiService.createTask(command).subscribe((res : any) => {
         console.log(res);
-        this.router.navigate(["tasks/list/user"]).then(r => {})
+        this.router.navigate(["tasks/user"]).then(r => {})
       })
     } else {
       Object.values(this.validateForm.controls).forEach(control => {
