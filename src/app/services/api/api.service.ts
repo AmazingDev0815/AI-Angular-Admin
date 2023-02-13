@@ -154,7 +154,7 @@ export class ApiService {
     return this.httpClient.get(url,{ headers });
   }
   getUserInfo(){
-    let url = `${this.BASE_URL}/users/${this.userContext.Upn}`;
+    let url = `${this.BASE_URL}/users/info`;
     let headers = new HttpHeaders({
       // @ts-ignore
       Authorization: this.userContext.AccessToken

@@ -36,7 +36,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
 
   load(apiService: ApiService) {
     const user = this.route.snapshot.paramMap.get('user');
-    if (user){
+    if (user === "user"){
       apiService.getTasks(true).subscribe((data:any)=>{
         this.tasks = data.items;
       })

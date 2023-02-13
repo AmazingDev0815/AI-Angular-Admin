@@ -14,7 +14,7 @@ export class ImageCollectionListComponent implements OnInit {
 
   ngOnInit(): void {
     const user = this.route.snapshot.paramMap.get('user');
-    if (user){
+    if (user === "user"){
       this.apiService.getImageCollections(true).subscribe((data:any) => {
         console.log(data);
         this.collections = data.items;
