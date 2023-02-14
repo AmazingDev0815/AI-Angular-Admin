@@ -4,7 +4,7 @@
  Add credits
 </a>  </p>
 
-<button style="margin-bottom: 1em"  routerLink="/tasks/create" nz-button nzType="primary"> Create task </button> Cost: 100 credit/task
+<button style="margin-bottom: 1em"  routerLink="/create-task" nz-button nzType="primary"> Create task </button> Cost: 100 credit/task
 <nz-table #basicTable [nzData]="tasks">
   <thead>
   <tr>
@@ -26,7 +26,11 @@
         Resolution: {{data.stableDiffusionModel.imageResolution}}x{{data.stableDiffusionModel.imageResolution}}
       </p>
     </td>
-    <td>{{data.user.upn}}</td>
+    <td>
+      <p>{{data.user?.upn}}</p>
+      <p>Is Test mode: <b>{{data.isTestMode}}</b></p>
+      <p>Number of training photos: {{data.numberOfUserPhotos}}</p>
+    </td>
     <td>
       <p>Instance name: {{ data.instanceName }} </p>
       <p>Text Encoder Step: {{ data.training.textEncoder.steps}} </p>
