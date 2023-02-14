@@ -26,7 +26,11 @@
         Resolution: {{data.stableDiffusionModel.imageResolution}}x{{data.stableDiffusionModel.imageResolution}}
       </p>
     </td>
-    <td>{{data.user.upn}}</td>
+    <td>
+      <p>{{data.user.upn}}</p>
+      <p>Is Test mode: <b>{{data.isTestMode}}</b></p>
+      <p>Number of training photos{{data.numberOfUserPhotos}}</p>
+    </td>
     <td>
       <p>Instance name: {{ data.instanceName }} </p>
       <p>Text Encoder Step: {{ data.training.textEncoder.steps}} </p>
