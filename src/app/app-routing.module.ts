@@ -30,7 +30,7 @@ const routes: Routes = [
   { path: 'user-photos/upload', component: UploadUserPhotoComponent , canActivate: [AuthorizationGuard]},
   { path: 'tasks/:user', component: TaskListComponent , canActivate: [AuthorizationGuard]},
   { path: 'tasks/list', component: TaskListComponent , canActivate: [AuthorizationGuard]},
-  { path: 'tasks/create', component: CreateTaskComponent , canActivate: [AuthorizationGuard]},
+  { path: 'create-task', component: CreateTaskComponent , canActivate: [AuthorizationGuard]},
   { path: 'prompts/list', component: PromptListComponent , canActivate: [AuthorizationGuard]},
   { path: 'prompts/create', component: CreatePromptComponent , canActivate: [AuthorizationGuard]},
   { path: 'collections/:user', component: ImageCollectionListComponent , canActivate: [AuthorizationGuard]},
