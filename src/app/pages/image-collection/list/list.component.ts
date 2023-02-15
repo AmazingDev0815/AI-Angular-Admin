@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ApiService} from "../../../services/api/api.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {environment} from "../../../../environments/environment";
 
 @Component({
   selector: 'app-list',
@@ -10,6 +11,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class ImageCollectionListComponent implements OnInit {
 
   collections: any[] = []
+  BASE_URL : string = environment.BASE_URL
   constructor(private apiService: ApiService,  private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
