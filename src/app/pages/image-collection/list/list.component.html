@@ -15,7 +15,8 @@
     <td>{{ data.user?.upn }}</td>
     <td>{{ data.images.length}}</td>
     <td>
-      <button routerLink="/collections/detail/{{data.id}}" nz-button nzType="primary">View collection</button>
+      <button style="margin-right: 1em" routerLink="/collections/detail/{{data.id}}" nz-button nzType="primary">View</button>
+      <a href="{{BASE_URL}}/image-collections/download/{{data.downloadToken}}" nz-button nzType="default">Download</a>
     </td>
   </tr>
   </tbody>
