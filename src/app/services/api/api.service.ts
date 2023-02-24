@@ -100,7 +100,7 @@ export class ApiService {
     });
     let url = `${this.BASE_URL}/admin/prompts/text-to-image`;
 
-    if (command.exampleImageFile?.size > 0){
+    if (command.initImageFile?.size > 0){
       url = `${this.BASE_URL}/admin/prompts/image-to-image`;
     }
 
