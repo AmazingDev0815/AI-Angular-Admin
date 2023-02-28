@@ -22,30 +22,23 @@ export class CreatePromptComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
-    let id = this.route.snapshot.paramMap.get('id');
-    if (id){
-      this.apiService.getPrompt(id).subscribe(
-        (data:any)=>{
-          console.log(data);
-          this.constructForm(data);
-          this.apiService.getTags().subscribe((data:any)=>{
-            console.log(data);
-            this.tags = data.items.map((x:any) => x.name);
-          });
-        })
-    }
-    else {
-      this.constructForm(null);
-      this.apiService.getTags().subscribe((data:any)=>{
-        console.log(data);
-        this.tags = data.items.map((x:any) => x.name);
-      });
-    }
+    this.constructForm(null);
+    this.apiService.getTags().subscribe((data:any)=>{
+      this.tags = data.items.map((x:any) => x.name);
+      let id = this.route.snapshot.paramMap.get('id');
+      if (id){
+        this.apiService.getPrompt(id).subscribe(
+          (prompt:any)=>{
+            this.selectedTags = prompt.tags;
+            this.constructForm(prompt);
+          })
+      }
+    });
   }
 
   constructForm(prompt: any): void {
     this.validateForm = this.fb.group({
-      id: [prompt?.id],
+      id: [prompt?.id ],
       value: [prompt?.value, [Validators.required]],
       active: [prompt?.active ?? true],
       negativeValue: [prompt?.negativeValue, [Validators.required]],
@@ -64,7 +57,6 @@ export class CreatePromptComponent implements OnInit {
   }
   submitForm(): void {
     if (this.validateForm.valid) {
-      console.log('submit', this.validateForm.value);
       this.validateForm.value.exampleImageFile = this.exampleImageFiles.at(0)?.originFileObj;
       this.validateForm.value.initImageFile = this.initImageFiles.at(0)?.originFileObj;
       this.apiService.createPrompt(this.validateForm.value).subscribe((data:any)=>{

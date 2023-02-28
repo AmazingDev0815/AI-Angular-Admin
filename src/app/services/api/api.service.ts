@@ -112,7 +112,7 @@ export class ApiService {
       Authorization: this.userContext.AccessToken
     })
 
-    if (!command.id){
+    if (command.id){
       url = `${this.BASE_URL}/admin/prompts`;
       return this.httpClient.put(url, formData, { headers });
     }
