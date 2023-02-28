@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
 import {ApiService} from "../../../services/api/api.service";
 import {Router} from "@angular/router";
 import {NzUploadFile} from "ng-zorro-antd/upload";
@@ -27,11 +27,13 @@ export class CreatePromptComponent implements OnInit {
     });
     this.validateForm = this.fb.group({
       value: [null, [Validators.required]],
+      active: [true],
       negativeValue: [null, [Validators.required]],
       cfgScale: [7.5, [Validators.required]],
       numberOfInferenceSteps: [20, [Validators.required]],
       exampleImageFile: [null],
       denoisingStrength: [0.75],
+      numberOfImages: [10, [Validators.required]],
       isDisabled: [false],
       seed: [-1, [Validators.required]],
       tags: [[]],

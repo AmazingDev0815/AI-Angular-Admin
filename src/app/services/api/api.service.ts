@@ -89,7 +89,9 @@ export class ApiService {
     formData.append("exampleImageFile", command.exampleImageFile);
     formData.append("initImageFile", command.initImageFile);
     formData.append("value", command.value);
+    formData.append("active", command.active?.toString());
     formData.append("negativeValue", command.negativeValue);
+    formData.append("numberOfImages", command.numberOfImages?.toString());
     formData.append("seed", command.seed?.toString());
     formData.append("numberOfInferenceSteps", command.numberOfInferenceSteps?.toString());
     formData.append("cfgScale", command.cfgScale?.toString());

@@ -39,8 +39,8 @@ export class CreateTaskComponent implements OnInit {
       for (let prompt of this.prompts) {
         (this.validateForm.get('prompts') as FormArray).push(this.fb.group({
           promptId: [prompt.id, Validators.required],
-          numberOfImages: [10, Validators.required],
-          active: [true],
+          numberOfImages: [prompt.numberOfImages, Validators.required],
+          active: [prompt.active],
           value : [prompt.value],
           negativeValue : [prompt.negativeValue],
           seed: [prompt.seed],

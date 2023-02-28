@@ -8,7 +8,10 @@
         <p>Tags:
           <nz-tag  *ngFor="let tag of prompt.tags" [nzColor]="'magenta'">{{tag}}</nz-tag>
         </p>
-        <p>Params: CFG Scale={{prompt.cfgScale}};
+        <p>
+          {{prompt.active? "ACTIVE" : "INACTIVE"}};
+          Number of images={{prompt.numberOfImages}};
+          Params: CFG Scale={{prompt.cfgScale}};
           Denoising Strength: {{prompt.denoisingStrength}};
           Number of inference steps= {{prompt.numberOfInferenceSteps}};
           Seed={{prompt.seed}};

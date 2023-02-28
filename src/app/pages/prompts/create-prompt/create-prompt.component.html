@@ -1,4 +1,9 @@
 <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+  <nz-form-item >
+    <label nz-checkbox formControlName="active">
+      <span style="font-weight: bold">Active this prompt for using in generating task</span>
+    </label>
+  </nz-form-item>
   <nz-form-item nz-row>
     <nz-form-label [nzSm]="6" [nzXs]="24" >Example image</nz-form-label>
     <nz-form-control [nzSm]="14" [nzXs]="24" >
@@ -67,9 +72,15 @@
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="numberOfImages" nzRequired>Number of images</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Number of images is required!">
+      <input nz-input type="number" id="numberOfImages" formControlName="numberOfImages"/>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="numberOfInferenceSteps" nzRequired>Number of inference steps</nz-form-label>
-    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input website!">
-      <input nz-input type="number" id="numberOfInferenceSteps" formControlName="numberOfInferenceSteps" value="20" />
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Number of inference steps required!">
+      <input nz-input type="number" id="numberOfInferenceSteps" formControlName="numberOfInferenceSteps"/>
     </nz-form-control>
   </nz-form-item>
 
