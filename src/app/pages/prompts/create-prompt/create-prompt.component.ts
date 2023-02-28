@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
 import {ApiService} from "../../../services/api/api.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {NzUploadFile} from "ng-zorro-antd/upload";
 
 @Component({
@@ -18,6 +18,7 @@ export class CreatePromptComponent implements OnInit {
 
   constructor(private fb: UntypedFormBuilder,
               private apiService: ApiService,
+              private route: ActivatedRoute,
               private router: Router) { }
 
   ngOnInit(): void {
@@ -25,19 +26,33 @@ export class CreatePromptComponent implements OnInit {
        console.log(data);
        this.tags = data.items.map((x:any) => x.name);
     });
+
+    let id = this.route.snapshot.paramMap.get('id');
+
+    this.apiService.getPrompt(id).subscribe(
+      (data:any)=>{
+      console.log(data);
+      this.constructForm(data);
+    }, (data:any) => {
+        this.constructForm(null);
+    })
+
+  }
+
+  constructForm(prompt: any): void {
     this.validateForm = this.fb.group({
-      value: [null, [Validators.required]],
-      active: [true],
-      negativeValue: [null, [Validators.required]],
-      cfgScale: [7.5, [Validators.required]],
-      numberOfInferenceSteps: [20, [Validators.required]],
+      id: [prompt?.id],
+      value: [prompt?.value, [Validators.required]],
+      active: [prompt?.active ?? true],
+      negativeValue: [prompt?.negativeValue, [Validators.required]],
+      cfgScale: [prompt?.cfgScale??7.5, [Validators.required]],
+      numberOfInferenceSteps: [prompt?.numberOfInferenceSteps??30, [Validators.required]],
       exampleImageFile: [null],
-      denoisingStrength: [0.75],
-      numberOfImages: [10, [Validators.required]],
-      isDisabled: [false],
-      seed: [-1, [Validators.required]],
-      tags: [[]],
-    });
+      denoisingStrength: [prompt?.DenoisingStrength??0.75],
+      numberOfImages: [prompt?.numberOfImages?? 10, [Validators.required]],
+      seed: [prompt?.seed?? -1, [Validators.required]],
+      tags: [prompt?.tags?? []],
+     })
   }
 
   isNotSelected(value: string): boolean {

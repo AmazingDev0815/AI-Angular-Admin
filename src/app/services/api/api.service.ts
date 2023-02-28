@@ -85,7 +85,7 @@ export class ApiService {
 
   createPrompt(command: CreatePromptCommand){
     let formData = new FormData();
-
+    formData.append("id", command.id);
     formData.append("exampleImageFile", command.exampleImageFile);
     formData.append("initImageFile", command.initImageFile);
     formData.append("value", command.value);
@@ -100,6 +100,7 @@ export class ApiService {
     command.tags.forEach(x=> {
       formData.append("tags", x);
     });
+
     let url = `${this.BASE_URL}/admin/prompts/text-to-image`;
 
     if (command.initImageFile?.size > 0){
@@ -110,6 +111,12 @@ export class ApiService {
       // @ts-ignore
       Authorization: this.userContext.AccessToken
     })
+
+    if (!command.id){
+      url = `${this.BASE_URL}/admin/prompts`;
+      return this.httpClient.put(url, formData, { headers });
+    }
+
     return this.httpClient.post(url, formData, { headers });
   }
   getTasks(filterByUser: boolean){
@@ -253,5 +260,14 @@ export class ApiService {
       Authorization: this.userContext.AccessToken
     })
     return this.httpClient.post(url,{} ,{ headers });
+  }
+
+  getPrompt(id: string | null) {
+    let url = `${this.BASE_URL}/admin/prompts/${id}`;
+    let headers = new HttpHeaders({
+      // @ts-ignore
+      Authorization: this.userContext.AccessToken
+    })
+    return this.httpClient.get(url,{ headers });
   }
 }

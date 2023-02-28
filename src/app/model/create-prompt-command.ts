@@ -1,4 +1,5 @@
 export interface CreatePromptCommand{
+  id: string,
   value: string,
   negativeValue: string,
   seed: number,

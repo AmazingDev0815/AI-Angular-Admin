@@ -33,6 +33,7 @@ const routes: Routes = [
   { path: 'create-task', component: CreateTaskComponent , canActivate: [AuthorizationGuard]},
   { path: 'prompts/list', component: PromptListComponent , canActivate: [AuthorizationGuard]},
   { path: 'prompts/create', component: CreatePromptComponent , canActivate: [AuthorizationGuard]},
+  { path: 'prompts/update/:id', component: CreatePromptComponent , canActivate: [AuthorizationGuard]},
   { path: 'collections/:user', component: ImageCollectionListComponent , canActivate: [AuthorizationGuard]},
   { path: 'collections/list', component: ImageCollectionListComponent , canActivate: [AuthorizationGuard]},
   { path: 'collections/detail/:id', component: DetailComponent , canActivate: [AuthorizationGuard]},

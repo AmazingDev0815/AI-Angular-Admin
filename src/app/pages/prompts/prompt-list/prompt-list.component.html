@@ -18,6 +18,9 @@
             Denoising Strength: {{prompt.denoisingStrength}};
           </span>
         </p>
+        <button type="button" routerLink="/prompts/update/{{prompt.id}}" nz-button nzType="primary">
+          Update <span nz-icon nzType="edit" nzTheme="outline"></span>
+        </button>
         <button type="button" (click)="delete(prompt.id)" nz-button nzDanger  nzType="primary">
           Delete <span nz-icon nzType="delete"></span>
         </button>
