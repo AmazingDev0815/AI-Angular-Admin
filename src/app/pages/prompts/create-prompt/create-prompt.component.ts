@@ -22,21 +22,25 @@ export class CreatePromptComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
-     this.apiService.getTags().subscribe((data:any)=>{
-       console.log(data);
-       this.tags = data.items.map((x:any) => x.name);
-    });
-
     let id = this.route.snapshot.paramMap.get('id');
-
-    this.apiService.getPrompt(id).subscribe(
-      (data:any)=>{
-      console.log(data);
-      this.constructForm(data);
-    }, (data:any) => {
-        this.constructForm(null);
-    })
-
+    if (id){
+      this.apiService.getPrompt(id).subscribe(
+        (data:any)=>{
+          console.log(data);
+          this.constructForm(data);
+          this.apiService.getTags().subscribe((data:any)=>{
+            console.log(data);
+            this.tags = data.items.map((x:any) => x.name);
+          });
+        })
+    }
+    else {
+      this.constructForm(null);
+      this.apiService.getTags().subscribe((data:any)=>{
+        console.log(data);
+        this.tags = data.items.map((x:any) => x.name);
+      });
+    }
   }
 
   constructForm(prompt: any): void {
