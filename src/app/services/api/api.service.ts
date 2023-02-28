@@ -182,7 +182,7 @@ export class ApiService {
   }
 
   getTags(){
-    let url = `${this.BASE_URL}/tags`;
+    let url = `${this.BASE_URL}/tags?pageSize=100`;
     let headers = new HttpHeaders({
       // @ts-ignore
       Authorization: this.userContext.AccessToken
