@@ -20,10 +20,11 @@
   <tr *ngFor="let data of basicTable.data">
     <td>
       <p>
-        {{ data.stableDiffusionModel.modelName }}
+        {{ data.stableDiffusionModel?.modelName }}
       </p>
       <p>
-        Resolution: {{data.stableDiffusionModel.imageResolution}}x{{data.stableDiffusionModel.imageResolution}}
+        Resolution: {{data.stableDiffusionModel?.imageResolution}}x{{data.stableDiffusionModel?.imageResolution}}
+        Image Name: {{data.stableDiffusionModel?.dockerImageTag}}x{{data.stableDiffusionModel?.dockerImageTag}}
       </p>
     </td>
     <td>
