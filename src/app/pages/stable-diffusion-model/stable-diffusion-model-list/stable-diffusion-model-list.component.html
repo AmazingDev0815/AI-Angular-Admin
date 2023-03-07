@@ -6,6 +6,7 @@
     <th>Model Name</th>
     <th>Docker Image Tag</th>
     <th>Image Resolution</th>
+    <th>Required Vram (GB) </th>
   </tr>
   </thead>
   <tbody>
@@ -14,6 +15,7 @@
     <td>{{ data.modelName }}</td>
     <td>{{ data.dockerImageTag }}</td>
     <td>{{ data.imageResolution }}x{{data.imageResolution}} </td>
+    <td>{{ data.requiredVRamInGigabytes }} </td>
   </tr>
   </tbody>
 </nz-table>
