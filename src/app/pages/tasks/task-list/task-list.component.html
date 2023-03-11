@@ -56,7 +56,7 @@
         <a *ngIf="data.status.value == 10" href="{{data.checkpointFilePath}}">Download .ckpt file</a>
       </p>
       <p>
-        <button routerLink="/collections/detail/{{data.imageCollectionId}}" *ngIf="data.status.value == 10"  nz-button nzType="primary">Go to result</button>
+        <button routerLink="/collections/detail/{{data.imageCollections[0].id}}" *ngIf="data.status.value == 10"  nz-button nzType="primary">Go to result</button>
       </p>
       <p>
         <button *ngIf="data.status.value > 0 && data.status.value < 10" nz-button nzLoading nzType="dashed">Processing</button>
