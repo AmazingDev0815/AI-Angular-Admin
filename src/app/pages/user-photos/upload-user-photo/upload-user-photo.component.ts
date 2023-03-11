@@ -13,18 +13,35 @@ export class UploadUserPhotoComponent implements OnInit {
   fileList: NzUploadFile[] = [];
   previewImage: string | undefined = '';
   previewVisible = false;
-
+  uploadUrl : string  = "";
   constructor(private router: Router, private apiService: ApiService) {
 
   }
 
   ngOnInit(): void {
+    this.apiService.getUploadToken().subscribe((data : any) => {
+      this.uploadUrl = this.apiService.BASE_URL + "/files/user-photo?token="+ data.token;
+      console.log(this.uploadUrl)
+    })
   }
   handlePreview = async (file: NzUploadFile): Promise<void> => {
   };
 
   onSubmitImage() {
-    this.apiService.uploadUserPhotos(this.fileList).subscribe((data: any) => {
+    let files = this.fileList.map(item => {
+      console.log(item.response.id)
+      return {
+        FileId : item.response.id
+      }
+    } )
+
+    let command = {
+      keepOldPhotos : false,
+      files : files
+    }
+    console.log(command);
+
+    this.apiService.uploadUserPhotos(command).subscribe((data: any) => {
       this.router.navigate(['user-photos/list']).then(r => {});
     }, error => {
     })

@@ -18,6 +18,15 @@ export class ApiService {
 
   }
 
+  getUploadToken(){
+    let url = `${this.BASE_URL}/files/upload-token`;
+    let headers = new HttpHeaders({
+      // @ts-ignore
+      Authorization: this.userContext.AccessToken
+    })
+    return this.httpClient.get(url,{headers});
+  }
+
   getGoogleOAuthUrl(redirectUri:string){
     let url = `${this.BASE_URL}/authentication/oauth-url`;
     return this.httpClient.post(url,{
@@ -42,18 +51,14 @@ export class ApiService {
     });
   }
 
-  uploadUserPhotos(files: NzUploadFile[]){
+  uploadUserPhotos(command : any){
     let url = `${this.BASE_URL}/user-photos`;
-    let formData = new FormData();
-    files.forEach(x => {
-      // @ts-ignore
-      formData.append('files', x.originFileObj);
-    })
+
     let headers = new HttpHeaders({
       // @ts-ignore
       Authorization: this.userContext.AccessToken
     })
-    return this.httpClient.post(url, formData, { headers });
+    return this.httpClient.post(url, command, { headers });
   }
 
   getUserPhotos(){
