@@ -46,8 +46,5 @@ export class TaskListComponent implements OnInit, OnDestroy {
         this.tasks = data.items;
       })
     }
-    apiService.getNumberOfAvailableInstances().subscribe((data:any)=>{
-      this.numberOfAvailableInstances = data
-    })
   }
 }
