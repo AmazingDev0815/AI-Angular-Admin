@@ -15,7 +15,7 @@
     <td>{{ data.createdDate }}</td>
     <td>{{ data.generatingTask.user.upn}}</td>
     <td>{{ data.name }}</td>
-    <td>{{ data.images.length}}</td>
+    <td>{{ data.numberOfImages}}</td>
     <td>
       <button style="margin-right: 1em" routerLink="/collections/detail/{{data.id}}" nz-button nzType="primary">View</button>
       <a href="{{BASE_URL}}/image-collections/download/{{data.id}}" nz-button nzType="default">Download</a>
