@@ -17,8 +17,15 @@ export class TaskListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+
     this.load(this.apiService);
-    this.interval = setInterval(() => this.load(this.apiService), 5000)
+    this.interval = setInterval(() => this.load(this.apiService), 5000);
+
+    this.route.paramMap.subscribe(params => {
+      clearInterval(this.interval);
+      this.load(this.apiService);
+      this.interval = setInterval(() => this.load(this.apiService), 5000);
+    });
 
     this.apiService.getUserInfo().subscribe((data:any) => {
       this.credit = data.credit;
@@ -26,7 +33,9 @@ export class TaskListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    clearInterval(this.interval)
+    if (this.interval){
+      clearInterval(this.interval)
+    }
   }
 
   stop(id:string) {
@@ -46,5 +55,8 @@ export class TaskListComponent implements OnInit, OnDestroy {
         this.tasks = data.items;
       })
     }
+    apiService.getNumberOfAvailableInstances().subscribe((data:any)=>{
+      this.numberOfAvailableInstances = data
+    })
   }
 }
