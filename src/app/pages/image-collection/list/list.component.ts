@@ -8,7 +8,7 @@ import {environment} from "../../../../environments/environment";
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css']
 })
-export class ImageCollectionListComponent implements OnInit, OnDestroy {
+export class ImageCollectionListComponent implements OnInit {
 
   collections: any[] = []
   interval : any
@@ -19,19 +19,11 @@ export class ImageCollectionListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.load(this.apiService);
-    this.interval = setInterval(() => this.load(this.apiService), 5000);
     this.route.paramMap.subscribe(params => {
-      clearInterval(this.interval);
       this.load(this.apiService);
-      this.interval = setInterval(() => this.load(this.apiService), 5000);
     });
   }
 
-  ngOnDestroy(): void {
-    if (this.interval){
-      clearInterval(this.interval)
-    }
-  }
   load(apiService: ApiService) {
     const user = this.route.snapshot.paramMap.get('user');
     if (user === "user"){
