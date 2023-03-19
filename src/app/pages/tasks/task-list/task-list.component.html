@@ -46,9 +46,9 @@
     </td>
     <td>
       <p style="font-weight: bold"> {{ data.status.name }}</p>
-      <nz-progress [nzPercent]="(data.training.textEncoder.trainedSteps*100 / data.training.textEncoder.steps).toFixed(0)" [nzStatus]="data.status.value <= 2 ? 'active' : 'success'">
+      <nz-progress [nzPercent]="(data.training.textEncoder.trainedSteps*100 / data.training.textEncoder.steps).toFixed(0)" [nzStatus]="data.status.value <= 3 ? 'active' : 'success'">
       </nz-progress>
-      <nz-progress [nzPercent]="(data.training.unet.trainedSteps*100/ data.training.unet.steps).toFixed(0)" [nzStatus]="data.status.value <= 3 ? 'active' : 'success'">
+      <nz-progress [nzPercent]="(data.training.unet.trainedSteps*100/ data.training.unet.steps).toFixed(0)" [nzStatus]="data.status.value <= 6 ? 'active' : 'success'">
       </nz-progress>
     </td>
     <td>
