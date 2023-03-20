@@ -21,8 +21,6 @@ export class UserContext {
       return false;
     }
     const expiry = (JSON.parse(atob(token.split('.')[1]))).exp;
-    console.log(expiry);
-    console.log((new Date).getTime());
     let invalid = (new Date).getTime() >= expiry*1000;
     return !invalid;
   }
