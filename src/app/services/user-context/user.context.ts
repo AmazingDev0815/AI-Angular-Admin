@@ -22,6 +22,9 @@ export class UserContext {
     }
     const expiry = (JSON.parse(atob(token.split('.')[1]))).exp;
     let invalid = (new Date).getTime() >= expiry*1000;
+    if (invalid){
+      this.clearAccessToken();
+    }
     return !invalid;
   }
 
