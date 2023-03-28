@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  BASE_URL: "https://localhost:44301",
+  BASE_URL: "https://test.api.mava.fun",
   STRIPE_URL: "",
 };
 

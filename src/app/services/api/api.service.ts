@@ -71,7 +71,7 @@ export class ApiService {
   }
 
   getPrompts(genderFilter: boolean){
-    let url = `${this.BASE_URL}/admin/prompts?genderFilter=${genderFilter}&pageSize=100`;
+    let url = `${this.BASE_URL}/admin/prompts?genderFilter=${genderFilter}&pageSize=5000`;
     let headers = new HttpHeaders({
       // @ts-ignore
       Authorization: this.userContext.AccessToken

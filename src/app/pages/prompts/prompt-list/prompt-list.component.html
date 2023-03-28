@@ -1,4 +1,19 @@
 <button style="margin-bottom: 1em" routerLink="/prompts/create" nz-button nzType="primary">Create new PROMPT</button>
+<div>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="tags">Tags</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" >
+      <nz-select id="tags" nzMode="multiple" [(ngModel)]="selectedTags" nzShowSearch nzAllowClear (ngModelChange)="search()">
+        <nz-option
+          *ngFor="let tag of tags"
+          [nzLabel]="tag"
+          [nzValue]="tag"
+          [nzHide]="!isNotSelected(tag)"
+        ></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+</div>
 <div *ngFor="let prompt of prompts" >
   <nz-card >
     <div nz-row>
