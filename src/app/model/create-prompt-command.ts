@@ -10,7 +10,8 @@ export interface CreatePromptCommand{
   cfgScale: number,
   exampleImageFile: File,
   initImageFile: File,
-  tags: string[]
+  tags: string[],
+  restoreFaceEnabled : boolean
 }
 
 export interface UpdatePromptCommand extends  CreatePromptCommand{

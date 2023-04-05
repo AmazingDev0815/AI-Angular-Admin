@@ -28,7 +28,8 @@
           Number of images: {{prompt.numberOfImages}};
           Number of inference steps: {{prompt.numberOfInferenceSteps}};
           Seed:{{prompt.seed}};
-          Params: CFG Scale: {{prompt.cfgScale}};
+          CFG Scale: {{prompt.cfgScale}};
+          Restore face: {{prompt.restoreFaceEnabled}};
           <span *ngIf="prompt.denoisingStrength">
             Denoising Strength: {{prompt.denoisingStrength}};
           </span>

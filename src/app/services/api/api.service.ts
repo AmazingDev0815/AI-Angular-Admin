@@ -101,6 +101,7 @@ export class ApiService {
     formData.append("numberOfInferenceSteps", command.numberOfInferenceSteps?.toString());
     formData.append("cfgScale", command.cfgScale?.toString());
     formData.append("denoisingStrength", command.denoisingStrength?.toString());
+    formData.append("restoreFaceEnabled", command.restoreFaceEnabled?.toString());
 
     command.tags.forEach(x=> {
       formData.append("tags", x);

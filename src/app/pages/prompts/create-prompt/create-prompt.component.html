@@ -96,6 +96,13 @@
       <input nz-input type="number" step="0.01" id="denoisingStrength" formControlName="denoisingStrength"/>
     </nz-form-control>
   </nz-form-item>
+  <nz-form-item >
+    <nz-form-label [nzSm]="6" [nzXs]="24" >
+      <span>Restore face</span>
+    </nz-form-label>
+    <label nz-checkbox formControlName="restoreFaceEnabled">
+    </label>
+  </nz-form-item>
   <nz-form-item nz-row>
     <nz-form-label [nzSm]="6" [nzXs]="24" >Init source image to image (img2img)</nz-form-label>
     <nz-form-control [nzSm]="14" [nzXs]="24" >

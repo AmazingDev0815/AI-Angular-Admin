@@ -45,6 +45,7 @@ export class CreatePromptComponent implements OnInit {
       cfgScale: [prompt?.cfgScale??7.5, [Validators.required]],
       numberOfInferenceSteps: [prompt?.numberOfInferenceSteps??30, [Validators.required]],
       exampleImageFile: [null],
+      restoreFaceEnabled: [prompt?.restoreFaceEnabled],
       denoisingStrength: [prompt?.DenoisingStrength??0.75],
       numberOfImages: [prompt?.numberOfImages?? 10, [Validators.required]],
       seed: [prompt?.seed?? -1, [Validators.required]],
