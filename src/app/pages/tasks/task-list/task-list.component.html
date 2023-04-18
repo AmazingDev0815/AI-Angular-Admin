@@ -52,9 +52,6 @@
     </td>
     <td>
       <p>
-        <a nz-button *ngIf="data.status.value == 10" href="{{data.checkpointFilePath}}">Download .ckpt</a>
-      </p>
-      <p>
         <button *ngIf="data.status.value > 0 && data.status.value < 10" nz-button nzLoading nzType="dashed">Processing</button>
       </p>
     </td>
