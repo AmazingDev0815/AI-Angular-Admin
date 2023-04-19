@@ -1,0 +1,21 @@
+<button style="float: right; margin-bottom: 1em" routerLink="/stable-diffusion-models/create" nz-button nzType="primary">Add new SD Model</button>
+<nz-table #basicTable [nzData]="models">
+  <thead>
+  <tr>
+    <th>No</th>
+    <th>Model Name</th>
+    <th>Docker Image Tag</th>
+    <th>Image Resolution</th>
+    <th>Required Vram (GB) </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let data of basicTable.data; let i = index">
+    <td>{{i+1}}</td>
+    <td>{{ data.modelName }}</td>
+    <td>{{ data.dockerImageTag }}</td>
+    <td>{{ data.imageResolution }}x{{data.imageResolution}} </td>
+    <td>{{ data.requiredVRamInGigabytes }} </td>
+  </tr>
+  </tbody>
+</nz-table>

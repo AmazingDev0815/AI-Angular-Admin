@@ -1,0 +1,24 @@
+<button style="float: right; margin-bottom: 1em" routerLink="/users/create" nz-button nzType="primary">Create user</button>
+<nz-table #basicTable [nzData]="users">
+<thead>
+<tr>
+  <th>Upn</th>
+  <th>Email</th>
+  <th>Name</th>
+  <th>Gender</th>
+  <th>Created Date</th>
+  <th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr *ngFor="let data of basicTable.data">
+  <td>{{ data.upn }}</td>
+  <td>{{ data.email }}</td>
+  <td>{{ data.name }}</td>
+  <td>{{ data.gender?.name }}</td>
+  <td>{{ data.createdDate }}</td>
+  <td>
+  </td>
+</tr>
+</tbody>
+</nz-table>

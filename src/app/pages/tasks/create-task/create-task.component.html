@@ -1,0 +1,122 @@
+<div>
+  <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="numberOfTrainingTextEncoderSteps">
+        Number of Training Text Encoder Steps
+      </nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Required">
+        <input nz-input formControlName="numberOfTrainingTextEncoderSteps" id="numberOfTrainingTextEncoderSteps"/>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="numberOfTrainingUnetSteps">
+        Number of Training Unet Steps
+      </nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Required">
+        <input nz-input formControlName="numberOfTrainingUnetSteps" id="numberOfTrainingUnetSteps"/>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="instanceName">Instance name</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Instance name is required">
+        <input nz-input formControlName="instanceName" id="instanceName" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="stableDiffusionModelId" nzRequired>Stable Diffusion Model</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" >
+        <nz-select id="stableDiffusionModelId" formControlName="stableDiffusionModelId">
+          <nz-option
+            *ngFor="let stableDiffusionModel of stableDiffusionModels"
+            [nzLabel]="stableDiffusionModel.modelName + ' [' + stableDiffusionModel.dockerImageTag + ']'"
+            [nzValue]="stableDiffusionModel.id"
+          ></nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+    <div formArrayName="prompts">
+      <div *ngFor="let prompt of prompts; let i=index" [formGroupName]="i">
+        <nz-card>
+          <nz-form-item nz-row >
+            <nz-form-control [nzSpan]="10" [nzOffset]="6">
+              <nz-form-item >
+                <label nz-checkbox formControlName="active">
+                  <span style="font-weight: bold">USE THIS PROMPT</span>
+                </label>
+              </nz-form-item>
+              <nz-form-item >
+                <nz-form-label > Tags </nz-form-label>
+                <nz-form-control>
+                  <nz-tag  *ngFor="let tag of prompt.tags" [nzColor]="'magenta'">{{tag}}</nz-tag>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item >
+                <nz-form-label> Prompt Id </nz-form-label>
+                <nz-form-control>
+                  <input nz-input formControlName="promptId" readonly/>
+                </nz-form-control>
+              </nz-form-item>
+            </nz-form-control>
+            <nz-form-control [nzSpan]="4" >
+              <img
+                style="float: right;"
+                nz-image
+                width="125px"
+                height="125px"
+                [nzSrc]="prompt.exampleImagePath"
+                alt="No example image"
+              />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item >
+            <nz-form-label [nzSm]="6" [nzXs]="24" > Prompt </nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" >
+              <textarea nz-input formControlName="value" readonly ></textarea>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item >
+            <nz-form-label [nzSm]="6" [nzXs]="24" > Negative Prompt </nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" >
+              <textarea nz-input formControlName="negativeValue" readonly ></textarea>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item >
+            <nz-form-label [nzSm]="6" [nzXs]="24" > Number of images </nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" >
+              <input type="number" nz-input formControlName="numberOfImages"  />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item >
+            <nz-form-label [nzSm]="6" [nzXs]="24" > Number of inference steps </nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" >
+              <input type="number" nz-input formControlName="numberOfInferenceSteps" />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item >
+            <nz-form-label [nzSm]="6" [nzXs]="24" > Seed </nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" >
+              <input type="number" nz-input formControlName="seed" />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item >
+            <nz-form-label [nzSm]="6" [nzXs]="24" > CFG Scale </nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" >
+              <input type="number" step=".1" nz-input formControlName="cfgScale" />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item *ngIf="prompt.type == 1" >
+            <nz-form-label [nzSm]="6" [nzXs]="24" > Denoising Strength</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" >
+              <input type="number" step=".01" nz-input formControlName="denoisingStrength" />
+            </nz-form-control>
+          </nz-form-item>
+        </nz-card>
+      </div>
+    </div>
+    <nz-form-item nz-row class="register-area" style="margin-top: 1em">
+      <nz-form-control [nzSpan]="14" [nzOffset]="10">
+        <button nz-button nzType="primary">Create task</button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+</div>

@@ -1,0 +1,22 @@
+<nz-upload
+  [nzAction]="uploadUrl"
+  nzListType="picture-card"
+  [(nzFileList)]="fileList"
+  [nzMultiple]="true"
+>
+  <div>
+    <span nz-icon nzType="plus"></span>
+    <div style="margin-top: 8px">Upload</div>
+  </div>
+</nz-upload>
+<nz-modal
+  [nzVisible]="previewVisible"
+  [nzContent]="modalContent"
+  [nzFooter]="null"
+  (nzOnCancel)="previewVisible = false"
+>
+  <ng-template #modalContent>
+    <img [src]="previewImage" [ngStyle]="{ width: '100%' }" />
+  </ng-template>
+</nz-modal>
+<button nz-button nzType="primary" (click)="onSubmitImage()">Upload</button>

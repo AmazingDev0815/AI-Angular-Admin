@@ -1,0 +1,40 @@
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="modelName">Model name</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Model name is required">
+      <input nz-input formControlName="modelName" id="modelName" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="dockerImageTag" nzRequired>Docker image tag</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input Docker image tag!">
+      <input nz-input id="dockerImageTag" formControlName="dockerImageTag"/>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="requiredVramInGigabytes" nzRequired>Required VRAM (GB)</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input Required VRAM (GB)">
+      <input nz-input id="requiredVramInGigabytes" formControlName="requiredVramInGigabytes"/>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="imageResolution" nzRequired>Image resolution</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input image resolution!">
+      <nz-select id="imageResolution" formControlName="imageResolution">
+        <nz-option
+          nzLabel="512x512"
+          nzValue=512
+        ></nz-option>
+        <nz-option
+          nzLabel="768x768"
+          nzValue=768
+        ></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item nz-row class="register-area">
+    <nz-form-control [nzSpan]="14" [nzOffset]="6">
+      <button nz-button nzType="primary">Save</button>
+    </nz-form-control>
+  </nz-form-item>
+</form>

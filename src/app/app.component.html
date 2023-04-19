@@ -1,0 +1,77 @@
+<nz-layout class="app-layout">
+  <nz-sider class="menu-sidebar"
+            nzCollapsible
+            nzWidth="256px"
+            nzBreakpoint="md"
+            [(nzCollapsed)]="isCollapsed"
+            [nzTrigger]="null">
+    <div class="sidebar-logo">
+      <a href="/" target="_blank">
+        <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
+        <h1>MAVA Admin Site</h1>
+      </a>
+    </div>
+    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+      <li nz-submenu nzOpen nzTitle="Test Procedure" nzIcon="forward">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/user-photos/list" >User Photos</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/tasks/user">Dreambooth Tasks</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/collections/user">Image Collection </a>
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzOpen nzTitle="System Management" nzIcon="setting">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/tasks/list">All Task</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/collections/list">All Collection</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/prompts/create">Create prompt</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/prompts/list">Prompt List</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/stable-diffusion-models/list">Stable Diffusion Model List</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/users/list">User List</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/users/create">Create user</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/users/login">Login</a>
+          </li>
+        </ul>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header>
+      <div class="app-header">
+        <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+            <span class="trigger"
+               nz-icon
+               [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+            ></span>
+        </span>
+        <span style="display: inline-block; float: right; padding-right: 2em">
+          <app-user-info></app-user-info>
+        </span>
+      </div>
+    </nz-header>
+    <nz-content>
+      <div class="inner-content" style="overflow: auto">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

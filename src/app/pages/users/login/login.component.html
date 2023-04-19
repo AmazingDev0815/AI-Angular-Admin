@@ -1,0 +1,36 @@
+<form *ngIf="!isAuthenticated" nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+  <nz-form-item>
+    <nz-form-control nzErrorTip="Please input your username!">
+      <nz-input-group nzPrefixIcon="user">
+        <input type="text" nz-input formControlName="upn" placeholder="upn" />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control nzErrorTip="Please input your Password!">
+      <nz-input-group nzPrefixIcon="lock">
+        <input type="password" nz-input formControlName="password" placeholder="Password" />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Log in</button>
+  <a [href]="googleOAuthUrl" nz-button class="login-form-button login-form-margin" [nzType]="'dashed'"><span nz-icon nzType="google" nzTheme="outline"></span> Log in with Google</a>
+</form>
+<div *ngIf="isAuthenticated" >
+  <p>
+    You have already logged in!
+  </p>
+  <p>
+    <button routerLink="/user-photos/list" nz-button nzType="dashed">My photos</button>
+  </p>
+  <p>
+    <button routerLink="/tasks/list" nz-button nzType="dashed">My tasks</button>
+  </p>
+  <p>
+    <button routerLink="/collections/list" nz-button nzType="dashed">My image collections</button>
+  </p>
+  <p>
+    <button (click)="logout()" nzDanger nz-button nzType="primary">Logout</button>
+  </p>
+</div>
+
